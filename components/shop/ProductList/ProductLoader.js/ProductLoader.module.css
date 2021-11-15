@@ -1,0 +1,15 @@
+.loaders {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 1em;
+  gap: 30px;
+}
+
+.customloader {
+  flex: auto;
+  width: 350px;
+  height: 350px;
+  min-width: 300px;
+  min-height: 300px;
+}

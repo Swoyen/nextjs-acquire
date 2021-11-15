@@ -1,0 +1,43 @@
+.relatedproduct {
+  min-height: 300px;
+  min-width: 300px;
+  height: 300px;
+  width: 300px;
+  /* border: 1px solid rgba(255, 255, 255, 0.4); */
+  /* background: rgba(255, 255, 255, 0.3); */
+  background: radial-gradient(#e66465, #9198e5);
+
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.relatedproduct:hover {
+  box-shadow: 0px 0px 10px black;
+  transition: all 0.4s;
+}
+
+.imagecontainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  min-height: 200px;
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.4s;
+}
+
+.image:hover {
+  width: 150%;
+  transition: all 0.4s;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 0.2em;
+}

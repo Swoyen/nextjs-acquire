@@ -1,0 +1,77 @@
+.brand {
+  padding: 15px;
+  font-weight: 800;
+  font-size: 2em;
+  margin: 1em;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  /* align-items: baseline; */
+  margin: 15px;
+  padding: 0;
+  align-items: center;
+}
+
+.sociallinks {
+}
+
+.sociallinks li {
+  padding-top: 5px;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.navbar {
+  display: flex;
+  flex: auto;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.navlinks {
+  display: flex;
+  align-content: center;
+}
+
+.links {
+  font-size: 1.2em;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+}
+
+.links li {
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 1)
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      rgba(0, 100, 200, 1)
+    );
+  background-size: 100% 0.1em, 0 0.1em;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  margin-right: 50px;
+  transition: background-size 400ms;
+}
+
+.links li:hover {
+  background-size: 0 0.1em, 100% 0.1em;
+}
+
+.cart {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+
+  flex-shrink: 1;
+  margin-left: 5em;
+}

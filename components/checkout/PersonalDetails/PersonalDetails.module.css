@@ -1,0 +1,46 @@
+.personaldetails {
+  flex: 6;
+  margin-top: 2.5em;
+}
+.subheader {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #9e9e9e;
+  border-bottom: 1px solid #e0e0e0;
+}
+.inputs {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.inputcontainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.05em;
+  font-weight: 500;
+}
+.multiinputcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.inputlabel {
+  color: #9e9e9e;
+  font-weight: 400;
+}
+
+.personaldetails input {
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  transition: all 0.5s;
+  outline: 1px solid white;
+  box-shadow: none;
+}
+
+.personaldetails input:focus {
+  border: 1px solid #9198e5;
+  outline: 1px solid #9198e5;
+  box-shadow: 0px 0px 5px #9198e5;
+  transition: all 0.5s;
+}

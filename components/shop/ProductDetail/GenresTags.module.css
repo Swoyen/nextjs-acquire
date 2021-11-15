@@ -1,0 +1,19 @@
+.genrestags {
+  margin-bottom: 50px;
+}
+.genretagcontainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.genretag {
+  background: linear-gradient(to right, #7b4397, #dc2430);
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 1px solid black;
+  border-radius: 25px;
+  min-width: 50px;
+  text-align: center;
+  color: white;
+}

@@ -1,0 +1,75 @@
+.item {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.imagecontainer {
+  min-width: 100px;
+  width: 100px;
+  height: 140px;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 15px;
+}
+
+.contentcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+}
+
+.header {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.subheader {
+}
+
+.price {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  align-items: center;
+  padding-block: 0.5em;
+  padding-inline: 1em;
+  border-radius: 5px;
+  background: linear-gradient(to right, #7b4397, #dc2430);
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1em;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  padding-inline: 2em;
+  transition: all 0.2s;
+  outline: black 0.25px solid;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}

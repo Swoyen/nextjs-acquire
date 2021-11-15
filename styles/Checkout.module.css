@@ -1,0 +1,11 @@
+.checkoutcontainer {
+  display: flex;
+  gap: 5em;
+}
+
+.subheader {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #9e9e9e;
+  border-bottom: 1px solid #e0e0e0;
+}

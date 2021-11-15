@@ -1,0 +1,50 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.sidesection {
+  flex: auto;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 1.5em;
+  /* padding: 0px 5px; */
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.subheading {
+  font-weight: 500;
+  font-size: 1.1em;
+  /* padding: 0px 5px; */
+}
+
+.link {
+  cursor: pointer;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 1)
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      rgba(0, 100, 200, 1)
+    );
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.1em, 20% 0.1em;
+  transition: all 0.5s;
+}
+
+.link:hover {
+  background-size: 0 0.1em, 80% 0.1em;
+  transition: all 0.5s;
+}

@@ -1,0 +1,33 @@
+.contentcontainer {
+  display: flex;
+}
+
+.sidebar {
+  min-width: 200px;
+  /* border-right: 5px solid rgba(3, 2, 0, 0.267); */
+  padding: 2em;
+  margin-right: 2em;
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.form {
+  margin-top: 2em;
+  text-align: center;
+  /* padding:  */
+  position: relative;
+}
+
+.formsearch {
+  position: absolute;
+  right: 2.5%;
+  top: 5px;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
