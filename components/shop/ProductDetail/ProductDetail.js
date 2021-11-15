@@ -85,7 +85,12 @@ const ProductDetail = ({ game, gameTrailer, screenshots }) => {
           <span>{`${game?.rating} out of ${game?.ratings_count} ratings.`}</span>
         </div>
         <div style={{ textAlign: "center" }}>
-          <a className={classes.weblink} href={game?.website} target="_blank">
+          <a
+            className={classes.weblink}
+            href={game?.website}
+            target="_blank"
+            rel="noreferrer"
+          >
             Visit Website
           </a>
         </div>
