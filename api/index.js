@@ -61,3 +61,17 @@ export const getParentGames = async (slug) => {
     return await axios.get(url);
   } catch (e) {}
 };
+
+export const getPlatforms = async () => {
+  try {
+    const url = `https://api.rawg.io/api/platforms?page_size=100&key=273662619363477a9d8c149890fb482e`;
+    return await axios.get(url);
+  } catch (e) {}
+};
+
+export const getStores = async () => {
+  try {
+    const url = `https://api.rawg.io/api/stores?page_size=100&key=273662619363477a9d8c149890fb482e`;
+    return await axios.get(url);
+  } catch (e) {}
+};

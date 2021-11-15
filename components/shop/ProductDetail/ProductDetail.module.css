@@ -124,3 +124,22 @@
   font-weight: 00;
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 768px) {
+  .productdetail {
+    margin-block: 1em;
+    flex-direction: column;
+  }
+
+  .gamedetails {
+    margin: 0.5em;
+  }
+  .heading {
+    font-weight: 500;
+    font-size: 1.5em;
+  }
+
+  .imagesvideocontainer {
+    padding: 1em;
+  }
+}

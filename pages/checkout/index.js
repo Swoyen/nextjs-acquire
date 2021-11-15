@@ -33,7 +33,7 @@ const index = () => {
         <div>
           {/* <button onClick={callApi}>pay</button> */}
           <PersonalDetails />
-          <PaymentDetails />
+          {/* <PaymentDetails /> */}
         </div>
 
         <CheckoutProducts />

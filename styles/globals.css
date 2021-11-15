@@ -203,3 +203,13 @@ input {
     scrollbar-width: thin;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .section-header {
+    font-size: 1.75em;
+    padding: 0.5em;
+  }
+  .mainbutton {
+    width: 100%;
+  }
+}

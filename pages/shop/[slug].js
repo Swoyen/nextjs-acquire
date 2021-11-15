@@ -51,12 +51,12 @@ const Product = ({ game }) => {
       {dlcs?.results?.length > 0 && (
         <RelatedProductList title={"DLC"} relatedProducts={dlcs} />
       )}
-      {relatedGames?.results?.length > 0 && (
+      {/* {relatedGames?.results?.length > 0 && (
         <RelatedProductList
           title={"Related Games"}
           relatedProducts={relatedGames}
         />
-      )}
+      )} */}
       {parentGames?.results?.length > 0 && (
         <RelatedProductList title={"Part of"} relatedProducts={parentGames} />
       )}

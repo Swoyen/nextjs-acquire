@@ -17,7 +17,9 @@ const MainNavigation = () => {
       <nav className={classes.navlinks}>
         <ul className={classes.links}>
           <li>
-            <Link href="/shop">Shop</Link>
+            <Link href="/shop">
+              <a>Shop</a>
+            </Link>
           </li>
           <li>
             <Link href="/about">About</Link>
@@ -46,15 +48,15 @@ const MainNavigation = () => {
               <FiTwitter size="1.5rem" />
             </a>
           </li>
-          <div className={classes.cart}>
-            <button
-              className="roundedbutton"
-              onClick={() => dispatch(showShoppingCartSideBar())}
-            >
-              <FiShoppingCart size="1.5rem" />
-            </button>
-          </div>
         </ul>
+        <div className={classes.cart}>
+          <button
+            className="roundedbutton"
+            onClick={() => dispatch(showShoppingCartSideBar())}
+          >
+            <FiShoppingCart size="1.5rem" />
+          </button>
+        </div>
       </nav>
     </div>
   );

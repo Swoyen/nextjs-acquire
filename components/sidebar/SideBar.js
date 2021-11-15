@@ -43,10 +43,28 @@ const SideBar = () => {
       </div>
       <div className={classes.sidesection}>
         <div className={classes.heading}>Browse</div>
+        <ul className={classes.list}>
+          <li className={`${classes.link} ${classes.subheading}`}>
+            <Link href="/shop/browse/platforms">Platforms</Link>
+          </li>
+          <li className={`${classes.link} ${classes.subheading}`}>
+            <Link href="/shop/browse/stores">Stores</Link>
+          </li>
+          <li className={`${classes.link} ${classes.subheading}`}>
+            <Link href="/shop/browse/creators">Creators</Link>
+          </li>
+          <li className={`${classes.link} ${classes.subheading}`}>
+            <Link href="/shop/browse/tags">Tags</Link>
+          </li>
+          <li className={`${classes.link} ${classes.subheading}`}>
+            <Link href="/shop/browse/developers">Developers</Link>
+          </li>
+          <li className={`${classes.link} ${classes.subheading}`}>
+            <Link href="/shop/browse/publishers">Publishers</Link>
+          </li>
+        </ul>
       </div>
-      <div className={classes.sidesection}>
-        <div className={classes.heading}>Platforms</div>
-      </div>
+
       <div className={classes.sidesection}>
         <div className={classes.heading}>Genres</div>
       </div>
