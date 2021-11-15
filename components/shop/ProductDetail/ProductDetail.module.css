@@ -59,6 +59,7 @@
   height: 600px;
   border-radius: 15px;
   overflow: hidden;
+  position: relative;
 }
 /* .videoplayer {
   flex: 1;

@@ -3,6 +3,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import { removeFromCart } from "../../../store/shoppingCart";
 import { useDispatch } from "react-redux";
 import { formatPrice } from "../../../utils/text";
+import Image from "next/image";
+import { rgbDataURL } from "../../../utils/image";
 
 const ShoppingCartItem = ({ cartItem }) => {
   const dispatch = useDispatch();
@@ -13,9 +15,18 @@ const ShoppingCartItem = ({ cartItem }) => {
     <>
       <div className={classes.shoppingcartitem}>
         <div className={classes.imagecontainer}>
-          <img
+          <Image
+            layout="responsive"
+            width={250}
+            height={400}
             className={classes.image}
-            src={cartItem?.background_image}
+            src={
+              cartItem?.background_image
+                ? cartItem?.background_image
+                : "/notfound_placeholder.svg"
+            }
+            placeholder="blur"
+            blurDataURL={rgbDataURL(200, 200, 200)}
             alt={cartItem?.slug}
           />
         </div>

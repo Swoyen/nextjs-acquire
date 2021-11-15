@@ -26,7 +26,9 @@ const Product = ({ game }) => {
     if (slug) {
       getGameTrailer(slug).then((res) => setGameTrailer(res.data));
       getScreenshots(slug).then((res) => setScreenshots(res.data));
-      getDlcs(slug).then((res) => setDlcs(res.data));
+      getDlcs(slug).then((res) => {
+        setDlcs(res.data);
+      });
       getSeries(slug).then((res) => setRelatedGames(res.data));
       getParentGames(slug).then((res) => setParentGames(res.data));
     }
@@ -74,7 +76,7 @@ export const getStaticPaths = async (context) => {
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
 
-  const game = (await getGame(slug)).data;
+  const game = (await getGame(slug))?.data;
 
   return {
     props: {

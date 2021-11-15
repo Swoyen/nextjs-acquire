@@ -8,12 +8,14 @@ import {
   FaAppStoreIos,
   FaInternetExplorer,
 } from "react-icons/fa";
+import Image from "next/image";
 
 import { RiSwitchFill } from "react-icons/ri";
 import ReactTooltip from "react-tooltip";
 import { minifyWords } from "../../../utils/text";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import { rgbDataURL } from "../../../utils/image";
 
 const getPlatformIcons = (platforms) => {
   return (
@@ -73,10 +75,19 @@ const Product = ({ game, index }) => {
       <div ref={productRef}>
         <div className={classes.product}>
           <div className={classes.cardmedia}>
-            <img
+            <Image
               className={classes.image}
-              src={game.background_image}
+              src={
+                game.background_image
+                  ? game.background_image
+                  : "/notfound_placeholder.svg"
+              }
               alt={game.name}
+              width={500}
+              height={450}
+              layout="responsive"
+              placeholder="blur"
+              blurDataURL={rgbDataURL(100, 100, 100)}
             />
           </div>
           <div className={classes.cardcontent}>

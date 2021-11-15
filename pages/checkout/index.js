@@ -3,13 +3,8 @@ import CheckoutProducts from "../../components/checkout/CheckoutProducts/Checkou
 import PersonalDetails from "../../components/checkout/PersonalDetails/PersonalDetails";
 import PaymentDetails from "../../components/checkout/PaymentDetails/PaymentDetails";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-
 const index = () => {
-  const cartItems = useSelector((state) => state.entities.shoppingCart.list);
-  const [priceAndProductIds, setPriceAndProductIds] = useState([]);
+  // const cartItems = useSelector((state) => state.entities.shoppingCart.list);
 
   // const product = {
   //   id: "game_123465_platform",
@@ -31,39 +26,6 @@ const index = () => {
   //     .catch((err) => console.log(err));
   // };
 
-  const createProductIfNotExists = async (product) => {
-    axios
-      .post("/api/products", product)
-      .then((res) =>
-        setPriceAndProductIds((priceIds) => [
-          ...priceIds,
-          { productId: product.id, priceId: res.data },
-        ])
-      )
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    (async () => {
-      if (cartItems) {
-        cartItems.forEach((cartItem) => {
-          const product = {
-            id: `game-${cartItem.id}-${cartItem.selectedPlatform.value}`,
-            active: true,
-            description: cartItem.description_raw,
-            name: cartItem.name,
-            images: [
-              cartItem.background_image,
-              cartItem.background_image_additional,
-            ],
-            livemode: false,
-          };
-          createProductIfNotExists(product);
-        });
-      }
-    })();
-  }, [cartItems]);
-
   return (
     <div>
       <div className="section-header">Checkout</div>
@@ -74,10 +36,7 @@ const index = () => {
           <PaymentDetails />
         </div>
 
-        <CheckoutProducts
-          priceAndProductIds={priceAndProductIds}
-          setPriceAndProductIds={setPriceAndProductIds}
-        />
+        <CheckoutProducts />
       </div>
     </div>
   );

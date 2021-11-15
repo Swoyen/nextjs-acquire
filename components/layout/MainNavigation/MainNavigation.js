@@ -28,17 +28,21 @@ const MainNavigation = () => {
         </ul>
         <ul className={classes.sociallinks}>
           <li>
-            <a href="https://www.instagram.com" target="_blank">
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FiInstagram size="1.5rem" />
             </a>
           </li>
           <li>
-            <a href="https://www.facebook.com" target="_blank">
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
               <FiFacebook size="1.5rem" />
             </a>
           </li>
           <li>
-            <a href="https://www.twitter.com" target="_blank">
+            <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
               <FiTwitter size="1.5rem" />
             </a>
           </li>

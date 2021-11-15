@@ -18,6 +18,8 @@ import {
 } from "../../../store/shoppingCart";
 import { useSelector } from "react-redux";
 import { formatPrice } from "../../../utils/text";
+import Image from "next/image";
+import { rgbDataURL } from "../../../utils/image";
 
 const productPrice = 69.99;
 
@@ -58,10 +60,18 @@ const ProductDetail = ({ game, gameTrailer, screenshots }) => {
     <div className={classes.productdetail}>
       <div className={classes.imagesvideocontainer}>
         <div className={classes.covercontainer}>
-          <img
+          <Image
             className={classes.coverimage}
-            src={game?.background_image}
+            src={
+              game?.background_image
+                ? game?.background_image
+                : "/notfound_placeholder.svg"
+            }
             alt={game?.gamedetails}
+            layout="fill"
+            priority
+            placeholder="blur"
+            blurDataURL={rgbDataURL(237, 181, 6)}
           />
         </div>
         <div className={classes.starcontainer}>

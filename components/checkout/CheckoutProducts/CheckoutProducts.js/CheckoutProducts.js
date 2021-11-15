@@ -5,16 +5,52 @@ import { useDispatch } from "react-redux";
 import { getSubtotal, removeFromCart } from "../../../../store/shoppingCart";
 import { AiOutlineClose } from "react-icons/ai";
 import { loadStripe } from "@stripe/stripe-js";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { rgbDataURL } from "../../../../utils/image";
+import axios from "axios";
 
-const CheckoutProducts = ({ priceAndProductIds, setPriceAndProductIds }) => {
+const CheckoutProducts = () => {
   const cartItems = useSelector((state) => state.entities.shoppingCart.list);
   const dispatch = useDispatch();
   const total = useSelector(getSubtotal);
+  const [priceAndProductIds, setPriceAndProductIds] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      if (cartItems) {
+        cartItems.forEach((cartItem) => {
+          const product = {
+            id: `game-${cartItem.id}-${cartItem.selectedPlatform.value}`,
+            active: true,
+            description: cartItem.description_raw,
+            name: cartItem.name,
+            images: [
+              cartItem.background_image,
+              cartItem.background_image_additional,
+            ],
+            livemode: false,
+          };
+          createProductIfNotExists(product);
+        });
+      }
+    })();
+  }, [cartItems]);
 
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem.id, cartItem.selectedPlatform));
   };
-
+  const createProductIfNotExists = async (product) => {
+    axios
+      .post("/api/products", product)
+      .then((res) =>
+        setPriceAndProductIds((priceIds) => [
+          ...priceIds,
+          { productId: product.id, priceId: res.data },
+        ])
+      )
+      .catch((err) => console.log(err));
+  };
   const handleCheckout = async () => {
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
     const lineItems = priceAndProductIds.map((priceIdWProductId) => ({
@@ -48,9 +84,18 @@ const CheckoutProducts = ({ priceAndProductIds, setPriceAndProductIds }) => {
                 <td>
                   <div className={classes.firstrow}>
                     <div className={classes.imagecontainer}>
-                      <img
+                      <Image
+                        layout="responsive"
+                        height={250}
+                        width={150}
                         className={classes.image}
-                        src={cartItem.background_image}
+                        placeholder="blur"
+                        blurDataURL={rgbDataURL(244, 244, 244)}
+                        src={
+                          cartItem.background_image
+                            ? cartItem.background_image
+                            : "/notfound_placeholder.svg"
+                        }
                         alt={cartItem.slug}
                       />
                     </div>

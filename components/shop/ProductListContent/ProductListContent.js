@@ -1,18 +1,26 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { loadGames, loadMoreGames } from "../../../store/products";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  loadGames,
+  loadMoreGames,
+  refreshState,
+} from "../../../store/products";
 import Loading from "../../loading/Loading";
 import ProductList from "../ProductList/ProductList";
 import ProductLoader from "../ProductList/ProductLoader.js/ProductLoader";
 
-const ProductListContent = () => {
+const ProductListContent = ({ dataToLoad }) => {
   const dispatch = useDispatch();
+
   const games = useSelector((state) => state.entities.products.games);
   const loading = useSelector((state) => state.entities.products.loading);
   const moreLoading = useSelector(
     (state) => state.entities.products.moreLoading
   );
+  useEffect(() => {
+    dispatch(dataToLoad());
+    return () => dispatch(refreshState());
+  }, []);
 
   const handleLoadMore = () => {
     dispatch(loadMoreGames());

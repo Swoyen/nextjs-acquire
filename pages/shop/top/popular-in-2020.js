@@ -1,21 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import ProductSearch from "../../../components/shop/ProductList/ProductSearch/ProductSearch";
 import ProductListContent from "../../../components/shop/ProductListContent/ProductListContent";
 import ShopLayout from "../../../components/shop/ShopLayout/ShopLayout";
-import { loadLast30Days, refreshState } from "../../../store/products";
+import { loadLast30Days } from "../../../store/products";
 
 const index = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadLast30Days());
-    return () => dispatch(refreshState());
-  }, []);
   return (
     <ShopLayout>
-      <div className="section-header">Popular</div>
+      <div className="section-header">Last 30 days</div>
       <ProductSearch />
-      <ProductListContent />
+      <ProductListContent dataToLoad={loadLast30Days} />
     </ShopLayout>
   );
 };
