@@ -5,6 +5,9 @@
   margin: 1em;
 }
 
+.navbar {
+  overflow: hidden;
+}
 .navbar ul {
   list-style: none;
   display: flex;
@@ -99,8 +102,14 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .brand {
+    margin-inline: 0.5em;
+  }
   .links li {
     margin: 0.5em;
     font-size: 1em;
+  }
+  .cart {
+    margin: 0em;
   }
 }

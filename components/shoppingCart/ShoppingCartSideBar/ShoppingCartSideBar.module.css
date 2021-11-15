@@ -71,3 +71,9 @@
   text-decoration: underline;
   width: auto;
 }
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    max-width: 100%;
+  }
+}
