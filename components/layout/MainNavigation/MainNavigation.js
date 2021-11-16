@@ -7,19 +7,18 @@ import {
   FiFacebook,
   FiSidebar,
 } from "react-icons/fi";
-import { useDispatch } from "react-redux";
-import { showShoppingCartSideBar } from "../../../store/shoppingCart";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getTotalItems,
+  showShoppingCartSideBar,
+} from "../../../store/shoppingCart";
 import { useContext } from "react";
 import { SideBarContext } from "../../../context/SideBarContext";
 import { useRouter } from "next/router";
 
 const MainNavigation = () => {
   const dispatch = useDispatch();
-
-  const router = useRouter();
-  const path = router.pathname;
-
-  console.log(path);
+  const totalItems = useSelector(getTotalItems);
   const [visible, setVisible] = useContext(SideBarContext);
   return (
     <div className={classes.mainnavigation}>
@@ -68,29 +67,30 @@ const MainNavigation = () => {
               </a>
             </li>
           </ul>
-          {path?.includes("/shop") && (
-            <>
-              <div className={classes.sidebarbutton}>
-                <button
-                  className="roundedbutton"
-                  onClick={() => setVisible(!visible)}
-                >
-                  <FiSidebar size="1.5rem" />
-                </button>
-              </div>
-            </>
-          )}
+
+          <div className={classes.sidebarbutton}>
+            <button
+              className="roundedbutton"
+              onClick={() => setVisible(!visible)}
+            >
+              <FiSidebar />
+            </button>
+          </div>
+
           <div className={classes.cart}>
             <button
               className="roundedbutton"
               onClick={() => dispatch(showShoppingCartSideBar())}
             >
-              <FiShoppingCart size="1.5rem" />
+              <FiShoppingCart />
+              {totalItems > 0 && (
+                <span className={classes.badge}>{totalItems}</span>
+              )}
             </button>
           </div>
         </nav>
       </div>
-      <ul className={classes.mobilelinks}>
+      {/* <ul className={classes.mobilelinks}>
         <li>
           <Link href="/shop">
             <a>Shop</a>
@@ -102,7 +102,7 @@ const MainNavigation = () => {
         <li>
           <Link href="/contact">Contact</Link>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };

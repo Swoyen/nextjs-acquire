@@ -35,6 +35,9 @@ const ShoppingCartItem = ({ cartItem }) => {
           <span className={classes.subheader}>
             {cartItem.selectedPlatform.label}
           </span>
+          <span className={`${classes.price} desktophidden`}>
+            {formatPrice(cartItem.price)}
+          </span>
         </div>
         <div>
           <button
@@ -46,7 +49,9 @@ const ShoppingCartItem = ({ cartItem }) => {
           </button>
         </div>
       </div>
-      <span className={classes.price}>{formatPrice(cartItem.price)}</span>
+      <span className={`${classes.price} mobilehidden`}>
+        {formatPrice(cartItem.price)}
+      </span>
     </div>
   );
 };

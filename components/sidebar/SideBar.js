@@ -3,9 +3,14 @@ import Link from "next/link";
 const SideBar = () => {
   return (
     <div className={classes.sidebar}>
-      <div className={classes.sidesection}>
+      <div className={`${classes.sidesection} desktophidden`}>
         <div className={`${classes.link} ${classes.heading}`}>
-          <Link href="/shop/">Home </Link>
+          <Link href="/about">About </Link>
+        </div>
+      </div>
+      <div className={`${classes.sidesection} desktophidden`}>
+        <div className={`${classes.link} ${classes.heading}`}>
+          <Link href="/contact">Contact </Link>
         </div>
       </div>
       <div className={classes.sidesection}>

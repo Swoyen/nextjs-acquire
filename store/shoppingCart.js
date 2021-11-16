@@ -90,6 +90,11 @@ export const getSubtotal = createSelector(
   }
 );
 
+export const getTotalItems = createSelector(
+  (state) => state.entities.shoppingCart.list,
+  (shoppingList) => shoppingList.length
+);
+
 export const {
   sideBarShown,
   sideBarHidden,

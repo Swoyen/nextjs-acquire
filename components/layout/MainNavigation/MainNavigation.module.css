@@ -2,7 +2,7 @@
   max-width: 100%;
   overflow: hidden;
   z-index: 98;
-  background: rgba(255, 255, 255, 1);
+  background: #f2f2f2;
 }
 .brand {
   padding: 15px;
@@ -82,6 +82,7 @@
   padding: 1em;
   flex-shrink: 1;
   margin-left: 5em;
+  position: relative;
 }
 
 .mobilelinks {
@@ -90,6 +91,19 @@
 
 .sidebarbutton {
   display: none;
+}
+
+.badge {
+  position: absolute;
+  font-weight: 200;
+  font-size: 0.5em;
+  border-radius: 50%;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  padding-top: 2px;
+  background: black;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -158,4 +172,7 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .navbar {
+    padding-block: 0.25em;
+  }
 }

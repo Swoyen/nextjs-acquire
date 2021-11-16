@@ -110,14 +110,10 @@ const CheckoutProducts = () => {
                           <AiOutlineClose size="1.25rem" /> <span>Remove</span>
                         </button>
                       </div>
-                      <span
-                        className={`${classes.platform} ${classes.desktophidden}`}
-                      >
+                      <span className={`${classes.platform} mobilehidden`}>
                         {cartItem.selectedPlatform.label}
                       </span>
-                      <span
-                        className={`${classes.price} ${classes.desktophidden} `}
-                      >
+                      <span className={`${classes.price} mobilehidden `}>
                         {formatPrice(cartItem.price)}
                       </span>
                     </div>
@@ -125,14 +121,12 @@ const CheckoutProducts = () => {
                 </td>
 
                 <td>
-                  <span
-                    className={`${classes.platform} ${classes.mobilehidden}`}
-                  >
+                  <span className={`${classes.platform} desktophidden`}>
                     {cartItem.selectedPlatform.label}
                   </span>
                 </td>
                 <td>
-                  <span className={`${classes.price} ${classes.mobilehidden} `}>
+                  <span className={`${classes.price} desktophidden `}>
                     {formatPrice(cartItem.price)}
                   </span>
                 </td>

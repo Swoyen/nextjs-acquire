@@ -76,12 +76,12 @@
 
 @media only screen and (max-width: 600px) {
   .imagecontainer {
-    min-width: 100%;
     min-height: 150px;
+    width: 120px;
     border-radius: 15px;
   }
   .item {
-    flex-direction: column;
+    flex-direction: row;
     position: relative;
     padding: 0.5em;
     gap: 0.3em;
