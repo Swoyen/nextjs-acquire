@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import useSWR from "swr";
 import classes from "../../styles/Result.module.css";
 import Result from "../../components/result/Result";
-const index = () => {
+
+const Results = () => {
   const router = useRouter();
   const { session_id } = router.query;
 
@@ -23,4 +24,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Results;
