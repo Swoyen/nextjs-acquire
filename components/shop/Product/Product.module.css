@@ -113,3 +113,16 @@
   border-radius: 5px;
   text-align: center;
 }
+
+@media screen and (max-width: 600px) {
+  .productcontainer {
+    /* max-width: 90%; */
+    width: 100%;
+  }
+
+  .product {
+    margin: 0.5em auto;
+    width: 90%;
+    max-width: 90%;
+  }
+}

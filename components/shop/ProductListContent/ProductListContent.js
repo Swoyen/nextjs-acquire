@@ -8,6 +8,7 @@ import {
 import Loading from "../../loading/Loading";
 import ProductList from "../ProductList/ProductList";
 import ProductLoader from "../ProductList/ProductLoader.js/ProductLoader";
+import classes from "./ProductListContent.module.css";
 
 const ProductListContent = ({ dataToLoad }) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const ProductListContent = ({ dataToLoad }) => {
   };
 
   return (
-    <>
+    <div className={classes.productlistcontainer}>
       {loading && <ProductLoader />}
       {!loading && <ProductList games={games} />}
       {moreLoading && <Loading loading={true}></Loading>}
@@ -41,7 +42,7 @@ const ProductListContent = ({ dataToLoad }) => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

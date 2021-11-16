@@ -28,3 +28,10 @@
   font-weight: 600;
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 600px) {
+  .buttoncontainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}

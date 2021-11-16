@@ -5,15 +5,14 @@
   top: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 98;
-  display: block;
+  z-index: 200;
   opacity: 1;
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 .sidebar {
   position: absolute;
   background: #f3f3f3;
-  z-index: 100;
+  z-index: 201;
   width: 500px;
   height: 100%;
   top: 0;
@@ -35,8 +34,9 @@
 .sidebarcontainerhidden {
   z-index: -2;
   opacity: 0;
+  background: rgba(0, 0, 0, 0);
   display: hidden;
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 .sidebarhidden {
   /* display: none; */
@@ -75,5 +75,10 @@
 @media only screen and (max-width: 768px) {
   .sidebar {
     max-width: 100%;
+  }
+  .buttonscontainer {
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
   }
 }

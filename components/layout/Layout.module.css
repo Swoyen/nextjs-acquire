@@ -4,10 +4,18 @@
   position: relative;
 }
 
+.layout {
+  position: relative;
+  padding-bottom: 250px;
+  min-height: 100vh;
+  /* background: blue; */
+}
+
 @media only screen and (max-width: 768px) {
   .container {
-    width: 100vw;
-    min-width: 100%;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
     padding: 1em;
   }
 }

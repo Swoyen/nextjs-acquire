@@ -11,10 +11,7 @@ const RelatedProduct = ({ dlc }) => {
   };
 
   return (
-    <div
-      onClick={() => handleClick(dlc.slug)}
-      className={classes.relatedproduct}
-    >
+    <div className={classes.relatedproduct}>
       <div className={classes.imagecontainer}>
         <Image
           layout="responsive"
@@ -32,6 +29,13 @@ const RelatedProduct = ({ dlc }) => {
         />
       </div>
       <div className={classes.title}> {dlc.name}</div>
+      <button
+        className="button"
+        style={{ padding: "0.5em 1em" }}
+        onClick={() => handleClick(dlc.slug)}
+      >
+        View game
+      </button>
     </div>
   );
 };

@@ -107,3 +107,19 @@
   display: flex;
   justify-content: center;
 }
+
+.desktophidden {
+  display: block;
+}
+.mobilehidden {
+  display: none;
+}
+
+@media only screen and(max-width: 600px) {
+  .desktophidden {
+    display: none !important;
+  }
+  .mobilehidden {
+    display: block !important;
+  }
+}

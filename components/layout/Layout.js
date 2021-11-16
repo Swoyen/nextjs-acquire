@@ -5,12 +5,12 @@ import MainNavigation from "./MainNavigation/MainNavigation";
 
 const Layout = (props) => {
   return (
-    <>
+    <div className={classes.layout}>
       <MainNavigation />
       <main className={classes.container}>{props.children}</main>
       <ShoppingCartSideBar />
       <Footer />
-    </>
+    </div>
   );
 };
 

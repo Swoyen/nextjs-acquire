@@ -16,8 +16,21 @@
   flex: 1;
 }
 
-.sidebarbutton {
+.closebutton {
   display: none;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0px solid black;
+  cursor: pointer;
+}
+
+.closebutton * {
+  margin: auto;
+  padding: auto;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -54,5 +67,9 @@
   .sidebarbuttoncollpased {
     left: 10px !important ;
     transition: all 1s;
+  }
+
+  .closebutton {
+    display: block;
   }
 }

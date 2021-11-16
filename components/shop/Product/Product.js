@@ -72,7 +72,7 @@ const Product = ({ game, index }) => {
   return (
     <>
       <ReactTooltip effect="solid" delayShow={200} />
-      <div ref={productRef}>
+      <div ref={productRef} className={classes.productcontainer}>
         <div className={classes.product}>
           <div className={classes.cardmedia}>
             <Image

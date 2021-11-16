@@ -143,3 +143,12 @@
     padding: 1em;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .covercontainer {
+    height: 300px;
+  }
+  .starcontainer {
+    flex-direction: column;
+  }
+}

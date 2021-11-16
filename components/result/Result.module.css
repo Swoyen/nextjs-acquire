@@ -1,0 +1,26 @@
+.container {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.iframe {
+  border: 0px solid white;
+  outline: none;
+}
+
+.email {
+  font-weight: 800;
+}
+
+.shopping {
+}
+.order {
+  font-size: 1.25em;
+  margin: 0.5em;
+}
+
+.buttoncontainer {
+  margin: 2em;
+  display: flex;
+  justify-content: center;
+}

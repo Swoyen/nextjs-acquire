@@ -33,3 +33,8 @@
   margin-top: 0.5em;
   padding: 1em;
 }
+@media only screen and (max-width: 600px) {
+  .productcontainer {
+    align-items: center;
+  }
+}

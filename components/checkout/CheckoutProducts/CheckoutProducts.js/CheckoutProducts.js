@@ -110,17 +110,29 @@ const CheckoutProducts = () => {
                           <AiOutlineClose size="1.25rem" /> <span>Remove</span>
                         </button>
                       </div>
+                      <span
+                        className={`${classes.platform} ${classes.desktophidden}`}
+                      >
+                        {cartItem.selectedPlatform.label}
+                      </span>
+                      <span
+                        className={`${classes.price} ${classes.desktophidden} `}
+                      >
+                        {formatPrice(cartItem.price)}
+                      </span>
                     </div>
                   </div>
                 </td>
 
                 <td>
-                  <span className={classes.platform}>
+                  <span
+                    className={`${classes.platform} ${classes.mobilehidden}`}
+                  >
                     {cartItem.selectedPlatform.label}
                   </span>
                 </td>
                 <td>
-                  <span className={classes.price}>
+                  <span className={`${classes.price} ${classes.mobilehidden} `}>
                     {formatPrice(cartItem.price)}
                   </span>
                 </td>
@@ -144,7 +156,11 @@ const CheckoutProducts = () => {
         </div>
       </div>
       <div className={classes.buttoncontainer}>
-        <button onClick={handleCheckout} className="mainbutton">
+        <button
+          disabled={priceAndProductIds?.length !== cartItems?.length}
+          onClick={handleCheckout}
+          className="mainbutton"
+        >
           Place Order
         </button>
       </div>

@@ -4,12 +4,10 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import LoadingBar from "react-top-loading-bar";
 import { Provider } from "react-redux";
-import configureStore from "../store/configureStore";
-import Aos from "aos";
-import "aos/dist/aos.css";
-import Scrollbars from "react-custom-scrollbars-2";
+import { PersistGate } from "redux-persist/integration/react";
 
-const store = configureStore();
+import { store, persistor } from "../store/configureStore";
+import { SideBarProvider } from "../context/SideBarContext";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -38,10 +36,14 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Provider store={store}>
-        <Layout>
-          <LoadingBar ref={ref} shadow={true} />
-          <Component {...pageProps} />
-        </Layout>
+        <PersistGate persistor={persistor}>
+          <SideBarProvider>
+            <Layout>
+              <LoadingBar ref={ref} shadow={true} />
+              <Component {...pageProps} />
+            </Layout>
+          </SideBarProvider>
+        </PersistGate>
       </Provider>
     </>
   );

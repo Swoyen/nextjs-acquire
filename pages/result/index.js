@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import useSWR from "swr";
-
-const Result = () => {
+import classes from "../../styles/Result.module.css";
+import Result from "../../components/result/Result";
+const index = () => {
   const router = useRouter();
   const { session_id } = router.query;
 
@@ -12,10 +14,13 @@ const Result = () => {
 
   return (
     <div>
-      <h1>Payment Result</h1>
-      <pre>{data ? JSON.stringify(data, null, 2) : "Loading..."}</pre>
+      {!data && !error && "...Loading"}
+      {data && <Result data={data} />}
+      {error && !data && "Error"}
+
+      {/* <pre>{data ? JSON.stringify(data, null, 2) : "Loading..."}</pre> */}
     </div>
   );
 };
 
-export default Result;
+export default index;

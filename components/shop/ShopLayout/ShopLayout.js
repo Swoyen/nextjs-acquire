@@ -1,25 +1,26 @@
 import SideBar from "../../sidebar/SideBar";
 import classes from "./ShopLayout.module.css";
-import { FiSidebar } from "react-icons/fi";
-import { useState } from "react";
+import { FiX } from "react-icons/fi";
+import { useContext } from "react";
+import { SideBarContext } from "../../../context/SideBarContext";
 
 const ShopLayout = (props) => {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [visible, setVisible] = useContext(SideBarContext);
+
   return (
     <div className={classes.contentcontainer}>
       <div
         className={`${classes.sidebar} ${
-          !sidebarVisible ? classes.sidebarcollapsed : ""
+          !visible ? classes.sidebarcollapsed : ""
         }`}
       >
         <SideBar />
+
         <button
-          className={`roundedbutton ${classes.sidebarbutton} ${
-            !sidebarVisible ? classes.sidebarbuttoncollpased : ""
-          }`}
-          onClick={() => setSidebarVisible(!sidebarVisible)}
+          className={classes.closebutton}
+          onClick={() => setVisible(false)}
         >
-          <FiSidebar size="1.5rem" />
+          <FiX size="1.5rem" />
         </button>
       </div>
       <div className={classes.content}>{props.children}</div>

@@ -73,3 +73,32 @@
   outline: black 0.25px solid;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
+@media only screen and (max-width: 600px) {
+  .imagecontainer {
+    min-width: 100%;
+    min-height: 150px;
+    border-radius: 15px;
+  }
+  .item {
+    flex-direction: column;
+    position: relative;
+    padding: 0.5em;
+    gap: 0.3em;
+  }
+
+  .price {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+  .header {
+    font-weight: 500;
+    font-size: 1em;
+    text-decoration: underline;
+  }
+
+  .subheader {
+    font-size: 0.9em;
+  }
+}

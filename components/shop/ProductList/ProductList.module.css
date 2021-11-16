@@ -5,3 +5,8 @@
   margin: 1em auto;
   transition: all 0.5s;
 }
+
+@media only screen and(max-width:600px) {
+  .productlist {
+  }
+}

@@ -1,4 +1,5 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { PURGE } from "redux-persist";
 
 const defaultState = {
   sideBarVisible: false,
@@ -28,6 +29,14 @@ const shoppingCartSlice = createSlice({
           selectedPlatform.value !== product.selectedPlatform.value
       );
     },
+    // extraReducers: (builder) => {
+    //   builder.addCase(PURGE, (state) => {
+    //     customEntityAdapter.removeAll(state);
+    //   });
+    // },
+    cartCleared: (shoppingCart) => {
+      shoppingCart.list = [];
+    },
   },
 });
 
@@ -47,6 +56,10 @@ export const addToCart = (game, selectedOption) => (dispatch) => {
 
 export const removeFromCart = (id, selectedOption) => (dispatch) => {
   return dispatch(productRemoved({ id, selectedPlatform: selectedOption }));
+};
+
+export const clearCart = () => (dispatch) => {
+  return dispatch(cartCleared());
 };
 
 export const getIsAddedToCart = (id, platform) =>
@@ -77,6 +90,11 @@ export const getSubtotal = createSelector(
   }
 );
 
-export const { sideBarShown, sideBarHidden, productAdded, productRemoved } =
-  shoppingCartSlice.actions;
+export const {
+  sideBarShown,
+  sideBarHidden,
+  productAdded,
+  productRemoved,
+  cartCleared,
+} = shoppingCartSlice.actions;
 export default shoppingCartSlice.reducer;
