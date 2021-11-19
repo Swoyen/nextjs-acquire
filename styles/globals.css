@@ -113,7 +113,9 @@ a {
   transition: all 0.2s;
   margin: auto;
 }
-
+.test {
+  color: blueviolet;
+}
 .roundedbutton {
   font-family: "Bebas Neue", sans-serif;
   text-transform: uppercase;
@@ -133,6 +135,27 @@ a {
   transition: all 0.2s;
   margin: auto;
   outline: white 0.5px solid;
+}
+
+.smallroundedbutton {
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  padding: 0.5em;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 1.2em;
+  border: 1px solid black;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+  outline: white 0.5px solid;
+  width: 50px;
+  height: 50px;
 }
 
 .roundedbutton:hover {

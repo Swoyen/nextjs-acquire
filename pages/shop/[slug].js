@@ -65,8 +65,9 @@ const Product = ({ game }) => {
 };
 
 export const getStaticPaths = async (context) => {
+  console.log("Here");
   const response = await getGames();
-  const slugs = response.data.results.map((game) => `/shop/${game.slug}`);
+  const slugs = response?.data.results.map((game) => `/shop/${game.slug}`);
   return {
     fallback: "blocking",
     paths: slugs,

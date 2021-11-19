@@ -5,9 +5,11 @@ import { useRouter } from "next/router";
 import LoadingBar from "react-top-loading-bar";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { Provider as NextProvider } from "next-auth/client";
 
 import { store, persistor } from "../store/configureStore";
 import { SideBarProvider } from "../context/SideBarContext";
+import ReactTooltip from "react-tooltip";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -37,12 +39,15 @@ function MyApp({ Component, pageProps }) {
     <>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <SideBarProvider>
-            <Layout>
-              <LoadingBar ref={ref} shadow={true} />
-              <Component {...pageProps} />
-            </Layout>
-          </SideBarProvider>
+          <NextProvider session={pageProps.session}>
+            <SideBarProvider>
+              <Layout>
+                <ReactTooltip effect="solid" delayShow={200} />
+                <LoadingBar ref={ref} shadow={true} />
+                <Component {...pageProps} />
+              </Layout>
+            </SideBarProvider>
+          </NextProvider>
         </PersistGate>
       </Provider>
     </>

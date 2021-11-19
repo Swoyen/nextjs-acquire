@@ -1,0 +1,12 @@
+.button {
+  margin: auto;
+  margin-block: 1em;
+  padding: 1em 2em;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+}

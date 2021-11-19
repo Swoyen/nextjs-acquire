@@ -1,4 +1,4 @@
-const letterLimit = 30;
+const letterLimit = 28;
 export const minifyWords = (words) => {
   const length = words.length;
   if (length < letterLimit) return words;

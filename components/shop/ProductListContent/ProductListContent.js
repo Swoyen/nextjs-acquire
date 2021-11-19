@@ -1,5 +1,7 @@
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getPageTitle } from "../../../api";
 import {
   loadGames,
   loadMoreGames,
@@ -12,6 +14,7 @@ import classes from "./ProductListContent.module.css";
 
 const ProductListContent = ({ dataToLoad }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const games = useSelector((state) => state.entities.products.games);
   const loading = useSelector((state) => state.entities.products.loading);
@@ -19,9 +22,11 @@ const ProductListContent = ({ dataToLoad }) => {
     (state) => state.entities.products.moreLoading
   );
   useEffect(() => {
-    dispatch(dataToLoad());
+    if (router) {
+      dispatch(dataToLoad(router.query));
+    }
     return () => dispatch(refreshState());
-  }, []);
+  }, [router, dataToLoad, dispatch]);
 
   const handleLoadMore = () => {
     dispatch(loadMoreGames());

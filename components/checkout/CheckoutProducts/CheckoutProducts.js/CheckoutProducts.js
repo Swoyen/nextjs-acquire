@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { rgbDataURL } from "../../../../utils/image";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
 const CheckoutProducts = () => {
   const cartItems = useSelector((state) => state.entities.shoppingCart.list);
@@ -67,7 +68,7 @@ const CheckoutProducts = () => {
     }).then((res) => res.json());
 
     const { error } = await stripe.redirectToCheckout({ sessionId });
-    console.log(lineItems);
+    // console.log(lineItems);
   };
 
   return (
@@ -150,13 +151,13 @@ const CheckoutProducts = () => {
         </div>
       </div>
       <div className={classes.buttoncontainer}>
-        <button
-          disabled={priceAndProductIds?.length !== cartItems?.length}
-          onClick={handleCheckout}
-          className="mainbutton"
-        >
-          Place Order
-        </button>
+        {priceAndProductIds?.length !== cartItems?.length ? (
+          <Loader />
+        ) : (
+          <button onClick={handleCheckout} className="mainbutton">
+            Place Order
+          </button>
+        )}
       </div>
     </div>
   );

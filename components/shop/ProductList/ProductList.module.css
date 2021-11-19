@@ -1,4 +1,4 @@
-.productlist {
+.productgrid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -6,7 +6,20 @@
   transition: all 0.5s;
 }
 
+.productlist {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 1em auto;
+  transition: all 0.5s;
+}
+
 @media only screen and(max-width:600px) {
-  .productlist {
+  .productgrid {
+    display: flex;
+    justify-content: center;
+    margin: 1em auto;
+    transition: all 0.5s;
   }
 }

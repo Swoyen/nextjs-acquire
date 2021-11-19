@@ -9,6 +9,6 @@ export default async function handler(req, res) {
   const session = await stripe.checkout.sessions.retrieve(id + "", {
     expand: [`payment_intent`],
   });
-  console.log(session);
+  // console.log(session);
   res.status(200).json({ session });
 }
