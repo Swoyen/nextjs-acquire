@@ -36,21 +36,20 @@ const MainNavigation = () => {
     router.push(url);
   };
 
-  const getMenuItems = (session) => {
-    if (!session) {
-      return [<div onClick={signIn}>Login</div>];
-    } else {
-      return [
-        <div onClick={() => handleGoto("/orders")}>Orders</div>,
-        // <div onClick={() => handleGoto("/user")}>Details</div>,
-        <div onClick={signOut}>Logout</div>,
-      ];
-    }
-  };
+  // const getMenuItems = (session) => {
+  //   if (!session) {
+  //     return [<div onClick={signIn}>Login</div>];
+  //   } else {
+  //     return [
+  //       <div onClick={() => handleGoto("/orders")}>Orders</div>,
+  //       // <div onClick={() => handleGoto("/user")}>Details</div>,
+  //       <div onClick={signOut}>Logout</div>,
+  //     ];
+  //   }
+  // };
 
   return (
     <div className={classes.mainnavigation}>
-      {/* <ReactTooltip effect="solid" delayShow={200} /> */}
       <div className={classes.navbar}>
         <div className={classes.brand}>Acquire</div>
         <nav className={classes.navlinks}>
