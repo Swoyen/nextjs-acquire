@@ -115,12 +115,12 @@ const MainNavigation = () => {
               >
                 <RiAccountBoxLine />
               </button>
-              <Menu
+              {/* <Menu
                 visible={accountMenuVisible}
                 setVisible={setAccountMenuVisible}
                 items={getMenuItems(session)}
                 buttonRef={buttonRef}
-              />
+              /> */}
             </div>
 
             <div className={classes.cart} data-tip="View Cart">
