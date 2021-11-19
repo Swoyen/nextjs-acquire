@@ -61,7 +61,7 @@ const SideBar = () => {
             </Link>
           </li>
           <li className={`${classes.link} ${classes.subheading}`}>
-            <Link passHrefhref="/shop/discover/this-week">
+            <Link passHref href="/shop/discover/this-week">
               <div onClick={() => setVisible(false)}>This week</div>
             </Link>
           </li>
@@ -101,38 +101,28 @@ const SideBar = () => {
             </Link>
           </li>
           <li className={`${classes.link} ${classes.subheading}`}>
-            <Link href="/shop/browse/stores">
-              <div passHref onClick={() => setVisible(false)}>
-                Stores
-              </div>
+            <Link passHref href="/shop/browse/stores">
+              <div onClick={() => setVisible(false)}>Stores</div>
             </Link>
           </li>
           <li className={`${classes.link} ${classes.subheading}`}>
-            <Link href="/shop/browse/creators">
-              <div passHref onClick={() => setVisible(false)}>
-                Creators
-              </div>
+            <Link passHref href="/shop/browse/creators">
+              <div onClick={() => setVisible(false)}>Creators</div>
             </Link>
           </li>
           <li className={`${classes.link} ${classes.subheading}`}>
-            <Link href="/shop/browse/tags">
-              <div passHref onClick={() => setVisible(false)}>
-                Tags
-              </div>
+            <Link passHref href="/shop/browse/tags">
+              <div onClick={() => setVisible(false)}>Tags</div>
             </Link>
           </li>
           <li className={`${classes.link} ${classes.subheading}`}>
-            <Link href="/shop/browse/developers">
-              <div passHref onClick={() => setVisible(false)}>
-                Developers
-              </div>
+            <Link passHref href="/shop/browse/developers">
+              <div onClick={() => setVisible(false)}>Developers</div>
             </Link>
           </li>
           <li className={`${classes.link} ${classes.subheading}`}>
-            <Link href="/shop/browse/publishers">
-              <div passHref onClick={() => setVisible(false)}>
-                Publishers
-              </div>
+            <Link passHref href="/shop/browse/publishers">
+              <div onClick={() => setVisible(false)}>Publishers</div>
             </Link>
           </li>
         </ul>
