@@ -118,45 +118,11 @@ const MainNavigation = () => {
               <Menu
                 visible={accountMenuVisible}
                 setVisible={setAccountMenuVisible}
-                // items={[
-                //   <div>Account details</div>,
-                //   <div
-                //     onClick={() => {
-                //       session ? signOut() : signIn();
-                //     }}
-                //   >
-                //     {session ? "Logout" : "Login"}
-                //   </div>,
-                // ]}
                 items={getMenuItems(session)}
                 buttonRef={buttonRef}
               />
             </div>
-            {/* <div
-              className={classes.authbutton}
-              data-tip={session ? "Logout" : "Login"}
-            >
-              {loading ? (
-                <Loader
-                  color="#933B7D"
-                  type="TailSpin"
-                  height={40}
-                  width={40}
-                />
-              ) : session ? (
-                <>
-                  <button className="roundedbutton" onClick={signOut}>
-                    <GoSignOut />
-                  </button>
-                  <span>{session.user.name}</span>
-                  <pre></pre>
-                </>
-              ) : (
-                <button className="roundedbutton" onClick={signIn}>
-                  <GoSignIn />
-                </button>
-              )}
-            </div> */}
+
             <div className={classes.cart} data-tip="View Cart">
               <button
                 className="roundedbutton"
@@ -171,19 +137,6 @@ const MainNavigation = () => {
           </div>
         </nav>
       </div>
-      {/* <ul className={classes.mobilelinks}>
-        <li>
-          <Link href="/shop">
-            <a>Shop</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
-        <li>
-          <Link href="/contact">Contact</Link>
-        </li>
-      </ul> */}
     </div>
   );
 };

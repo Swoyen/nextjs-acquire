@@ -30,11 +30,11 @@ const index = () => {
     <div>
       <div className="section-header">Checkout</div>
       <div className={classes.checkoutcontainer}>
-        <div>
-          {/* <button onClick={callApi}>pay</button> */}
-          <PersonalDetails />
-          {/* <PaymentDetails /> */}
-        </div>
+        {/* <div> */}
+        {/* <button onClick={callApi}>pay</button> */}
+        {/* <PersonalDetails /> */}
+        {/* <PaymentDetails /> */}
+        {/* </div> */}
 
         <CheckoutProducts />
       </div>

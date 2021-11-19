@@ -10,11 +10,12 @@ import { Provider as NextProvider } from "next-auth/client";
 import { store, persistor } from "../store/configureStore";
 import { SideBarProvider } from "../context/SideBarContext";
 import ReactTooltip from "react-tooltip";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const ref = useRef(null);
-
+  // const { height, width } = useWindowDimensions();
   useEffect(() => {}, []);
 
   useEffect(() => {
@@ -42,7 +43,12 @@ function MyApp({ Component, pageProps }) {
           <NextProvider session={pageProps.session}>
             <SideBarProvider>
               <Layout>
-                <ReactTooltip effect="solid" delayShow={200} />
+                {/* <ReactTooltip
+                  // disable={width <= 600}
+                  disable={true}
+                  effect="solid"
+                  delayShow={200}
+                /> */}
                 <LoadingBar ref={ref} shadow={true} />
                 <Component {...pageProps} />
               </Layout>

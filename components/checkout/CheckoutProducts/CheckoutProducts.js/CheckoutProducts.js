@@ -152,7 +152,7 @@ const CheckoutProducts = () => {
       </div>
       <div className={classes.buttoncontainer}>
         {priceAndProductIds?.length !== cartItems?.length ? (
-          <Loader />
+          <Loader type="ThreeDots" color="blueviolet" height={30} />
         ) : (
           <button onClick={handleCheckout} className="mainbutton">
             Place Order

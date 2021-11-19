@@ -206,4 +206,9 @@
     width: 90%;
     max-width: 90%;
   }
+  .listproduct {
+    margin: 0;
+    margin-bottom: 0.25em;
+    width: 98%;
+  }
 }
