@@ -50,15 +50,15 @@ const Login = ({ providers, session }) => {
   );
 };
 
-// Login.getInitialProps = async (context) => {
-//   try {
-//     return {
-//       providers: await providers(context),
-//       session: await getSession(context),
-//     };
-//   } catch (ex) {
-//     console.log(ex);
-//   }
-// };
+Login.getInitialProps = async (context) => {
+  try {
+    return {
+      providers: await providers(context),
+      session: await getSession(context),
+    };
+  } catch (ex) {
+    console.log(ex);
+  }
+};
 
 export default Login;
