@@ -10,6 +10,7 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 const Login = ({ providers, session }) => {
   const router = useRouter();
 
+  console.log({ providers, session });
   useEffect(() => {
     if (session && router) {
       router.query.callbackUrl
