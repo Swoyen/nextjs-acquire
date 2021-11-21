@@ -22,7 +22,7 @@ const SideBar = () => {
   const genres = apiGenres;
   const router = useRouter();
   const [visible, setVisible] = useContext(SideBarContext);
-  const [allGenresShown, setAllGenresShown] = useState(false);
+  const [allGenresNotShown, setAllGenresNotShown] = useState(true);
 
   const handleGoTo = (url) => {
     router.push(url);
@@ -132,7 +132,7 @@ const SideBar = () => {
         <div className={classes.heading}>Genres</div>
         <ul
           className={`${classes.list} ${
-            allGenresShown ? classes.allgenrelist : classes.partialgenrelist
+            allGenresNotShown ? classes.allgenrelist : classes.partialgenrelist
           }`}
         >
           {genres?.map((genre) => (
@@ -141,9 +141,9 @@ const SideBar = () => {
         </ul>
         <button
           className={classes.button}
-          onClick={() => setAllGenresShown(!allGenresShown)}
+          onClick={() => setAllGenresNotShown(!allGenresNotShown)}
         >
-          {!allGenresShown ? (
+          {!allGenresNotShown ? (
             <AiOutlineUp size="1rem" />
           ) : (
             <AiOutlineDown size="1rem" />
