@@ -14,7 +14,7 @@ export default (req, res) =>
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       }),
     ],
-    debug: process.env.NODE_ENV === "development",
+    debug: true,
     secret: process.env.AUTH_SECRET,
     jwt: {
       secret: process.env.JWT_SECRET,
@@ -26,6 +26,7 @@ export default (req, res) =>
     callbacks: {
       session: async (session, user) => {
         //console.log({ user, isNewUser });
+        console.log("Seession--------------", session);
         session.userId = user.sub;
         return Promise.resolve(session);
         //return Promise.resolve(session);

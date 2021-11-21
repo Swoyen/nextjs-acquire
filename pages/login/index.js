@@ -51,14 +51,17 @@ const Login = ({ providers, session }) => {
   );
 };
 
-Login.getInitialProps = async (context) => {
+export const getServerSideProps = async (context) => {
   try {
     return {
-      providers: await providers(context),
-      session: await getSession(context),
+      props: {
+        providers: await providers(context),
+        session: await getSession(context),
+      },
     };
   } catch (ex) {
     console.log(ex);
+    return { props: {} };
   }
 };
 
