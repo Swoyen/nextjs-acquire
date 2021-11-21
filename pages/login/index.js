@@ -1,16 +1,31 @@
-import { providers, getSession, getProviders } from "next-auth/client";
+import {
+  providers,
+  getSession,
+  getProviders,
+  useSession,
+} from "next-auth/client";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import LoginButton from "../../components/button/LoginButton";
 import classes from "../../styles/Login.module.css";
 import { AiFillGithub } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
-const Login = ({ providers, session, headers, url, error }) => {
+const Login = ({ headers, url, error }) => {
   const router = useRouter();
+  const [session, loading] = useSession();
+  const [providers, setProviders] = useState(null);
 
-  console.log({ providers, session, headers, url });
+  useEffect(() => {
+    (async () => {
+      const providers = await getProviders();
+      console.log("Providers", providers);
+      setProviders(providers);
+    })();
+  }, []);
+
+  // console.log({ providers, session, headers, url });
   useEffect(() => {
     if (session && router) {
       router.query.callbackUrl
@@ -40,13 +55,13 @@ const Login = ({ providers, session, headers, url, error }) => {
             </div>
             <div className={classes.buttoncontainer}>
               <LoginButton
-                provider={providers.google}
+                provider={providers?.google}
                 background={"white"}
                 color={"black"}
                 icon={<FcGoogle size="1.5rem" />}
               />
               <LoginButton
-                provider={providers.github}
+                provider={providers?.github}
                 icon={<AiFillGithub size="1.5rem" />}
               />
             </div>
@@ -57,24 +72,24 @@ const Login = ({ providers, session, headers, url, error }) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
-  try {
-    const providers = await getProviders(context);
-    const session = await getSession(context);
+// export const getServerSideProps = async (context) => {
+//   try {
+//     const providers = await getProviders(context);
+//     const session = await getSession(context);
 
-    return {
-      props: {
-        providers,
-        session,
-        headers: context.req.headers,
-        url: process.env.NEXTAUTH_URL,
-        // context: JSON.stringify(context),
-      },
-    };
-  } catch (ex) {
-    console.log(ex);
-    return { props: { error: JSON.stringify(ex) } };
-  }
-};
+//     return {
+//       props: {
+//         providers,
+//         session,
+//         headers: context.req.headers,
+//         url: process.env.NEXTAUTH_URL,
+//         // context: JSON.stringify(context),
+//       },
+//     };
+//   } catch (ex) {
+//     console.log(ex);
+//     return { props: { error: JSON.stringify(ex) } };
+//   }
+// };
 
 export default Login;
