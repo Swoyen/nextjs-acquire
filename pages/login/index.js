@@ -11,6 +11,7 @@ import LoginButton from "../../components/button/LoginButton";
 import classes from "../../styles/Login.module.css";
 import { AiFillGithub } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import axios from "axios";
 
 const Login = ({ headers, url, error }) => {
   const router = useRouter();
@@ -18,10 +19,17 @@ const Login = ({ headers, url, error }) => {
   const [providers, setProviders] = useState(null);
 
   useEffect(() => {
+    let mounted = true;
     (async () => {
-      const providers = await getProviders();
-      console.log("Providers", providers);
-      setProviders(providers);
+      axios
+        .get("/api/providers")
+        .then((res) => {
+          if (mounted) {
+            console.log("Providers: ", providers);
+            setProviders(res.data.providers);
+          }
+        })
+        .catch((err) => console.log(err));
     })();
   }, []);
 
