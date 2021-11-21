@@ -7,10 +7,10 @@ import classes from "../../styles/Login.module.css";
 import { AiFillGithub } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
-const Login = ({ providers, session, headers, error }) => {
+const Login = ({ providers, session, headers, url, error }) => {
   const router = useRouter();
 
-  console.log({ providers, session, headers });
+  console.log({ providers, session, headers, url });
   useEffect(() => {
     if (session && router) {
       router.query.callbackUrl
@@ -67,6 +67,7 @@ export const getServerSideProps = async (context) => {
         providers,
         session,
         headers: context.req.headers,
+        url: process.env.NEXTAUTH_URL,
         // context: JSON.stringify(context),
       },
     };
