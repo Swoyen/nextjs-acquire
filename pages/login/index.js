@@ -7,10 +7,10 @@ import classes from "../../styles/Login.module.css";
 import { AiFillGithub } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
-const Login = ({ providers, session, error }) => {
+const Login = ({ providers, session, headers, error }) => {
   const router = useRouter();
 
-  console.log({ providers, session });
+  console.log({ providers, session, headers });
   useEffect(() => {
     if (session && router) {
       router.query.callbackUrl
@@ -61,13 +61,17 @@ export const getServerSideProps = async (context) => {
   try {
     const providers = await getProviders(context);
     const session = await getSession(context);
+
     return {
       props: {
         providers,
         session,
+        headers: context.req.headers,
+        // context: JSON.stringify(context),
       },
     };
   } catch (ex) {
+    console.log(ex);
     return { props: { error: JSON.stringify(ex) } };
   }
 };
