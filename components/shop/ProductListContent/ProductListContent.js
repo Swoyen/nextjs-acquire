@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadGames,
@@ -14,6 +15,7 @@ import classes from "./ProductListContent.module.css";
 const ProductListContent = ({ dataToLoad }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const { ref, inView, entry } = useInView();
 
   const games = useSelector((state) => state.entities.products.games);
   const loading = useSelector((state) => state.entities.products.loading);
@@ -28,8 +30,12 @@ const ProductListContent = ({ dataToLoad }) => {
   }, [router, dataToLoad, dispatch]);
 
   const handleLoadMore = () => {
-    dispatch(loadMoreGames());
+    if (!moreLoading) dispatch(loadMoreGames());
   };
+
+  useEffect(() => {
+    if (inView) handleLoadMore();
+  }, [inView]);
 
   return (
     <div className={classes.productlistcontainer}>
@@ -39,6 +45,7 @@ const ProductListContent = ({ dataToLoad }) => {
       {!moreLoading && !loading && (
         <div className="buttoncontainer">
           <button
+            ref={ref}
             onClick={() => handleLoadMore()}
             className={`secondarybutton`}
           >

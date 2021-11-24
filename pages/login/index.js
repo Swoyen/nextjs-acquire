@@ -12,6 +12,7 @@ import classes from "../../styles/Login.module.css";
 import { AiFillGithub } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
 const Login = ({ headers, url, error }) => {
   const router = useRouter();
@@ -70,18 +71,22 @@ const Login = ({ headers, url, error }) => {
             <div onClick={handleGoBack} className={classes.backcontainer}>
               <MdOutlineArrowBackIosNew size=".8rem" /> <span>Go back</span>
             </div>
-            <div className={classes.buttoncontainer}>
-              <LoginButton
-                provider={providers?.google}
-                background={"white"}
-                color={"black"}
-                icon={<FcGoogle size="1.5rem" />}
-              />
-              <LoginButton
-                provider={providers?.github}
-                icon={<AiFillGithub size="1.5rem" />}
-              />
-            </div>
+            {providers && providers.length !== 0 ? (
+              <div className={classes.buttoncontainer}>
+                <LoginButton
+                  provider={providers?.google}
+                  background={"white"}
+                  color={"black"}
+                  icon={<FcGoogle size="1.5rem" />}
+                />
+                <LoginButton
+                  provider={providers?.github}
+                  icon={<AiFillGithub size="1.5rem" />}
+                />
+              </div>
+            ) : (
+              <Loader type="ThreeDots" color="blueviolet" height={30} />
+            )}
           </div>
         </>
       )}
