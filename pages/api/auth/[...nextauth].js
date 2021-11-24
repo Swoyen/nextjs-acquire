@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
-
+import connectDB from "../../../config/connectDB";
+connectDB();
 export default NextAuth({
   session: { jwt: true },
   providers: [
