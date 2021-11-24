@@ -21,13 +21,14 @@ const handler = async (req, res) => {
     } catch (error) {
       if (error?.statusCode === 404) {
         console.log("doesnt exist");
+        console.log("images", data.images);
         try {
           const productResult = await stripe.products.create({
             id: data.id,
             object: data.product,
             description: data.description,
             name: data.name,
-            images: data.images,
+            images: data.images.filter((image) => image !== null),
           });
           console.log("Product created");
 

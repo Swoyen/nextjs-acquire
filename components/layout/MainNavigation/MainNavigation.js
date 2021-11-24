@@ -36,17 +36,17 @@ const MainNavigation = () => {
     router.push(url);
   };
 
-  // const getMenuItems = (session) => {
-  //   if (!session) {
-  //     return [<div onClick={signIn}>Login</div>];
-  //   } else {
-  //     return [
-  //       <div onClick={() => handleGoto("/orders")}>Orders</div>,
-  //       // <div onClick={() => handleGoto("/user")}>Details</div>,
-  //       <div onClick={signOut}>Logout</div>,
-  //     ];
-  //   }
-  // };
+  const getMenuItems = (session) => {
+    if (!session) {
+      return [<div onClick={signIn}>Login</div>];
+    } else {
+      return [
+        <div onClick={() => handleGoto("/orders")}>Orders</div>,
+        // <div onClick={() => handleGoto("/user")}>Details</div>,
+        <div onClick={signOut}>Logout</div>,
+      ];
+    }
+  };
 
   return (
     <div className={classes.mainnavigation}>
@@ -114,12 +114,12 @@ const MainNavigation = () => {
               >
                 <RiAccountBoxLine />
               </button>
-              {/* <Menu
+              <Menu
                 visible={accountMenuVisible}
                 setVisible={setAccountMenuVisible}
                 items={getMenuItems(session)}
                 buttonRef={buttonRef}
-              /> */}
+              />
             </div>
 
             <div className={classes.cart} data-tip="View Cart">

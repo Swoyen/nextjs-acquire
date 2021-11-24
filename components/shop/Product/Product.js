@@ -18,7 +18,7 @@ import gsap from "gsap";
 import { rgbDataURL } from "../../../utils/image";
 import { useSelector } from "react-redux";
 import { getDisplay } from "../../../store/products";
-
+import { IoIosArrowForward } from "react-icons/io";
 const getPlatformIcons = (platforms) => {
   return (
     <div className={classes.platformicons}>
@@ -167,7 +167,11 @@ const Product = ({ game, index }) => {
               }
               onClick={() => showDetails(game)}
             >
-              {productDisplay === "grid" ? "Show Details" : "View"}
+              {productDisplay === "grid" ? (
+                "Show Details"
+              ) : (
+                <IoIosArrowForward size="1.5rem" />
+              )}
             </button>
           </div>
         </div>

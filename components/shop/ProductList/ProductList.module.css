@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin: 1em auto;
+  gap: 0.5em;
   transition: all 0.5s;
 }
 
