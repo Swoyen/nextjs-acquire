@@ -38,12 +38,20 @@ const MainNavigation = () => {
 
   const getMenuItems = (session) => {
     if (!session) {
-      return [<div onClick={signIn}>Login</div>];
+      return [
+        <div key={1} onClick={signIn}>
+          Login
+        </div>,
+      ];
     } else {
       return [
-        <div onClick={() => handleGoto("/orders")}>Orders</div>,
+        <div key={2} onClick={() => handleGoto("/orders")}>
+          Orders
+        </div>,
         // <div onClick={() => handleGoto("/user")}>Details</div>,
-        <div onClick={signOut}>Logout</div>,
+        <div key={3} onClick={signOut}>
+          Logout
+        </div>,
       ];
     }
   };
