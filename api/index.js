@@ -18,7 +18,6 @@ export const getGamesA = async (
   query = { pageSize: 10, page: 1, searchTerm: null, platforms: null }
 ) => {
   try {
-    console.log(query);
     const pageSize = query.pageSize ? query.pageSize : 10;
     const page = query.page ? query.page : 1;
     const url = `https://api.rawg.io/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
