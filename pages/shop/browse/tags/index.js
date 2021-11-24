@@ -1,5 +1,5 @@
 import React from "react";
-import { getTags } from "../../../../api";
+import { getTags } from "../../../../api_helper";
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 import classes from "../../../../styles/Browse.module.css";

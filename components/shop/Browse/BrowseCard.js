@@ -1,8 +1,6 @@
 import classes from "./BrowseCard.module.css";
 import Image from "next/image";
-import { getGames } from "../../../api";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 
 const BrowseCard = ({ baseUrl, data, subHeading, url }) => {
   const router = useRouter();

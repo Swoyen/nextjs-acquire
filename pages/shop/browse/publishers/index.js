@@ -1,5 +1,5 @@
 import React from "react";
-import { getPlatforms, getPublishers } from "../../../../api";
+import { getPlatforms, getPublishers } from "../../../../api_helper";
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 

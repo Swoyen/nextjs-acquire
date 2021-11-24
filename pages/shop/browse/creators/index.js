@@ -1,5 +1,5 @@
 import React from "react";
-import { getCreators } from "../../../../api";
+import { getCreators } from "../../../../api_helper";
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 

@@ -1,6 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
-import { getGames } from "../api";
 import { apiCallBegan } from "./api";
 
 const defaultState = {

@@ -4,7 +4,7 @@ import { loadGames } from "../../store/products";
 import ProductListContent from "../../components/shop/ProductListContent/ProductListContent";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getPageTitle } from "../../api";
+import { getPageTitle } from "../../api_helper";
 import ReactLoader from "react-loader-spinner";
 
 const Shop = () => {

@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPageTitle } from "../../../api";
 import {
   loadGames,
   loadMoreGames,

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { getGamesA, getPlatformGames } from "../../../../api";
+import { getGamesA, getPlatformGames } from "../../../../api_helper";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 
 const Platforms = () => {
