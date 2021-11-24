@@ -8,7 +8,7 @@ import {
   getParentGames,
   getScreenshots,
   getSeries,
-} from "../../api";
+} from "../../api_helper";
 import ProductDetail from "../../components/shop/ProductDetail/ProductDetail";
 import RelatedProductList from "../../components/shop/RelatedProductList/RelatedProductList";
 
