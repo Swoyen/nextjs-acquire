@@ -30,6 +30,15 @@ const Login = ({ headers, url, error }) => {
           }
         })
         .catch((err) => console.log(err));
+
+      axios
+        .get("/api/test")
+        .then((res) => {
+          if (mounted) {
+            console.log(res);
+          }
+        })
+        .catch((err) => console.log(err));
     })();
   }, []);
 

@@ -41,6 +41,8 @@ const handler = async (req, res) => {
         } catch (err) {
           console.log("cant create", err);
         }
+      } else {
+        res.status(500).json({ message: "Cant create" });
       }
     }
   }
