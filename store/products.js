@@ -16,6 +16,7 @@ const defaultState = {
   queryKey: null,
   queryValue: null,
   display: "grid",
+  error: false,
 };
 
 const productsSlice = createSlice({
@@ -24,18 +25,21 @@ const productsSlice = createSlice({
   reducers: {
     gamesRequested: (products, action) => {
       products.loading = true;
+      products.error = false;
       products.lastFetch = Date.now();
     },
 
     gamesReceived: (products, action) => {
       products.games = action.payload.results;
       products.loading = false;
+      products.error = false;
 
       products.page = 1;
     },
 
     gamesRequestFailed: (products, action) => {
       products.loading = false;
+      products.error = true;
     },
 
     moreGamesRequested: (products, action) => {
@@ -43,6 +47,7 @@ const productsSlice = createSlice({
     },
 
     moreGamesReceived: (products, action) => {
+      products.error = false;
       products.moreLoading = false;
       products.games = [...products.games, ...action.payload.results];
 
@@ -51,7 +56,8 @@ const productsSlice = createSlice({
     },
 
     moreGamesRequestFailed: (products, action) => {
-      products.loading = false;
+      products.moreLoading = false;
+      products.error = true;
     },
 
     searchTermChanged: (products, action) => {
@@ -86,6 +92,7 @@ const productsSlice = createSlice({
       products.ordering = defaultState.ordering;
       products.queryKey = defaultState.queryKey;
       products.queryValue = defaultState.queryValue;
+      products.error = defaultState.error;
     },
 
     displaySet: (products, action) => {

@@ -18,7 +18,8 @@ const ProductListContent = ({ dataToLoad }) => {
   const { ref, inView, entry } = useInView();
 
   const games = useSelector((state) => state.entities.products.games);
-  const loading = useSelector((state) => state.entities.products.loading);
+  const { loading, error } = useSelector((state) => state.entities.products);
+
   const moreLoading = useSelector(
     (state) => state.entities.products.moreLoading
   );
@@ -40,9 +41,9 @@ const ProductListContent = ({ dataToLoad }) => {
   return (
     <div className={classes.productlistcontainer}>
       {loading && <ProductLoader />}
-      {!loading && <ProductList games={games} />}
+      {!loading && !error && <ProductList games={games} />}
       {moreLoading && <Loading loading={true}></Loading>}
-      {!moreLoading && !loading && (
+      {!error && !moreLoading && !loading && (
         <div className="buttoncontainer">
           <button
             ref={ref}
@@ -51,6 +52,17 @@ const ProductListContent = ({ dataToLoad }) => {
           >
             Load more
           </button>
+        </div>
+      )}
+      {error && (
+        <div className={classes.fourofour}>
+          <iframe
+            src="https://giphy.com/embed/14uQ3cOFteDaU"
+            width="480"
+            height="360"
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
         </div>
       )}
     </div>
