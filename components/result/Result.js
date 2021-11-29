@@ -29,8 +29,7 @@ const Result = ({ data }) => {
   }, [data, session, cart]);
 
   useEffect(() => {
-    if (session && orderCreated && data) {
-      console.log(data);
+    if (session && orderCreated) {
       const items = cart.map((item) => ({
         name: item.name,
         image: item.background_image,
@@ -47,7 +46,7 @@ const Result = ({ data }) => {
         .then((res) => dispatch(clearCart()))
         .catch((err) => console.log(err.response));
     }
-  }, [orderCreated, session, data]);
+  }, [orderCreated, session]);
 
   const handleGoToShopping = () => {
     router.push("/shop");
