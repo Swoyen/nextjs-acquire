@@ -63,3 +63,10 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media only screen and (max-width: 768px) {
+  .browsecard {
+    min-width: 100%;
+    width: 100%;
+  }
+}
