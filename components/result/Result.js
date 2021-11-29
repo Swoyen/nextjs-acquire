@@ -1,22 +1,53 @@
 import axios from "axios";
+import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { clearCart } from "../../store/shoppingCart";
+import { clearCart, getSubtotal } from "../../store/shoppingCart";
 import classes from "./Result.module.css";
 const Result = ({ data }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const cart = useSelector((state) => state.entities.shoppingCart.list);
+  const total = useSelector(getSubtotal);
+  const [orderCreated, setOrderCreated] = useState(false);
+  const [session, loading] = useSession();
 
   useEffect(() => {
-    if (data && data.session.payment_status === "paid") {
+    if (
+      data &&
+      session &&
+      data.session.payment_status === "paid" &&
+      cart?.length > 0
+    ) {
       // console.log("clear cart");
       // dispatch(clearCart());
+      console.log("Created");
       createOrder(data, cart);
     }
-  }, [data]);
+  }, [data, session, cart]);
+
+  useEffect(() => {
+    if (session && orderCreated && data) {
+      console.log(data);
+      const items = cart.map((item) => ({
+        name: item.name,
+        image: item.background_image,
+        price: item.price,
+        platform: item.selectedPlatform.label,
+        age_rating: item.esrb_rating?.name ? item.esrb_rating?.name : "N/A",
+      }));
+      const name = session?.user.name;
+      const email = session?.user.email;
+      const data = { items, total, user: { name, email } };
+
+      axios
+        .post("/api/mail", data)
+        .then((res) => dispatch(clearCart()))
+        .catch((err) => console.log(err.response));
+    }
+  }, [orderCreated, session, data]);
 
   const handleGoToShopping = () => {
     router.push("/shop");
@@ -42,8 +73,7 @@ const Result = ({ data }) => {
     axios
       .post("/api/orders", order)
       .then((res) => {
-        dispatch(clearCart());
-        console.log("Order created!");
+        setOrderCreated(true);
       })
       .catch((err) => console.log(err.response));
   };

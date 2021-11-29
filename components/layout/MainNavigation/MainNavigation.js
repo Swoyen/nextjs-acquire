@@ -13,6 +13,7 @@ import { RiAccountBoxLine } from "react-icons/ri";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getSubtotal,
   getTotalItems,
   showShoppingCartSideBar,
 } from "../../../store/shoppingCart";
@@ -22,6 +23,8 @@ import { useRouter } from "next/router";
 import { signin, signIn, signOut, useSession } from "next-auth/client";
 import Loader from "react-loader-spinner";
 import Menu from "../../menu/Menu";
+import Email from "../../../utils/email";
+import axios from "axios";
 
 const MainNavigation = () => {
   const dispatch = useDispatch();
@@ -31,6 +34,8 @@ const MainNavigation = () => {
   const [visible, setVisible] = useContext(SideBarContext);
   const [accountMenuVisible, setAccountMenuVisible] = useState(false);
   const buttonRef = useRef(null);
+  const cart = useSelector((state) => state.entities.shoppingCart.list);
+  const total = useSelector(getSubtotal);
 
   const handleGoto = (url) => {
     router.push(url);
@@ -56,12 +61,37 @@ const MainNavigation = () => {
     }
   };
 
+  const handleSendEmail = async () => {
+    const items = cart.map((item) => ({
+      name: item.name,
+      image: item.background_image,
+      price: item.price,
+      platform: item.selectedPlatform.label,
+      age_rating: item.esrb_rating?.name ? item.esrb_rating?.name : "N/A",
+    }));
+    const name = session?.user.name;
+    const email = session?.user.email;
+    const data = { items, total, user: { name, email } };
+
+    // Name
+    // background_image
+    // Price
+    // Selected Platform
+    // Age Rating: esrb_rating.name
+
+    axios
+      .post("/api/mail", data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err.response));
+  };
+
   return (
     <div className={classes.mainnavigation}>
       <div className={classes.navbar}>
         <div className={classes.brand}>Acquire</div>
         <nav className={classes.navlinks}>
           <ul className={classes.links}>
+            {/* <button onClick={() => handleSendEmail()}>Send Email</button> */}
             <li>
               <Link href="/shop">
                 <a>Shop</a>

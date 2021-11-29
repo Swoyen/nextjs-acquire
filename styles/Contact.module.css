@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  gap: 15px;
+}
+
+.formline {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.input {
+  max-width: 100%;
+}
+
+.input {
+}
