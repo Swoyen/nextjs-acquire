@@ -29,7 +29,7 @@ const Result = ({ data }) => {
   }, [data, session, cart]);
 
   useEffect(() => {
-    if (session && orderCreated) {
+    if (session && orderCreated && cart?.length > 0) {
       const items = cart.map((item) => ({
         name: item.name,
         image: item.background_image,
@@ -40,10 +40,10 @@ const Result = ({ data }) => {
       const name = session?.user.name;
       const email = session?.user.email;
       const data = { items, total, user: { name, email } };
-
+      dispatch(clearCart());
       axios
         .post("/api/mail", data)
-        .then((res) => dispatch(clearCart()))
+        .then((res) => {})
         .catch((err) => console.log(err.response));
     }
   }, [orderCreated, session]);
@@ -99,10 +99,8 @@ const Result = ({ data }) => {
             </div>
             <div>
               You will receive an email at{" "}
-              <span className={classes.email}>
-                {data?.session.customer_details.email}
-              </span>{" "}
-              with the receipt.
+              <span className={classes.email}>{session?.user.email}</span> with
+              the receipt.
             </div>
           </div>{" "}
           <div onClick={handleGoToShopping} className={classes.buttoncontainer}>
