@@ -13,7 +13,7 @@ const api =
 
     try {
       const response = await axios.request({
-        baseURL: "https://api.rawg.io/api",
+        // baseURL: "https://api.rawg.io/api",
         url,
         method,
         data,

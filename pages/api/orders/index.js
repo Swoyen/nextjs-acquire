@@ -1,7 +1,6 @@
 import connectDB from "../../../config/connectDB";
 import Orders from "../../../models/orderModel";
 import { getSession } from "next-auth/client";
-import getStoredStateMigrateV4 from "redux-persist/lib/integration/getStoredStateMigrateV4";
 
 connectDB();
 export default async function handler(req, res) {

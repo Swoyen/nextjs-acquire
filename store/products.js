@@ -1,4 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import moment from "moment";
 import { apiCallBegan } from "./api";
 
@@ -140,9 +141,10 @@ export const loadGames =
       queryKey,
       queryValue,
     } = getState().entities.products;
+
     return dispatch(
       apiCallBegan({
-        url: `games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${1}${
+        url: `/api/games?page_size=${pageSize}&page=${1}${
           searchTerm ? `&search=${searchTerm}` : ""
         }${ordering ? `&ordering=${ordering}` : ""}${
           startDateStr ? `&dates=${startDateStr},${endDateStr}` : ""
@@ -174,7 +176,7 @@ export const loadLast30Days = () => (dispatch, getState) => {
   dispatch(searchDateModified({ startDateStr, endDateStr }));
   return dispatch(
     apiCallBegan({
-      url: `games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${startDateStr},${endDateStr}`,
       onStart: gamesRequested.type,
@@ -193,7 +195,7 @@ export const loadNextWeek = () => (dispatch, getState) => {
   dispatch(searchDateModified({ startDateStr: fromDate, endDateStr: to }));
   return dispatch(
     apiCallBegan({
-      url: `games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${fromDate},${to}`,
       onStart: gamesRequested.type,
@@ -212,7 +214,7 @@ export const loadThisWeek = () => (dispatch, getState) => {
   dispatch(searchDateModified({ startDateStr: fromDate, endDateStr: to }));
   return dispatch(
     apiCallBegan({
-      url: `games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${fromDate},${to}`,
       onStart: gamesRequested.type,
@@ -232,7 +234,7 @@ export const loadBestOfTheYear = () => (dispatch, getState) => {
   dispatch(searchOrderingModified(rating));
   return dispatch(
     apiCallBegan({
-      url: `games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${fromDate},${to}&ordering=${rating}`,
       onStart: gamesRequested.type,
@@ -251,7 +253,7 @@ export const loadPopularIn2020 = () => (dispatch, getState) => {
   dispatch(searchOrderingModified(ordering));
   return dispatch(
     apiCallBegan({
-      url: `games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${fromDate},${to}&ordering=${ordering}`,
       onStart: gamesRequested.type,
@@ -267,7 +269,7 @@ export const loadTop250 = () => (dispatch, getState) => {
   dispatch(searchOrderingModified(ordering));
   return dispatch(
     apiCallBegan({
-      url: `games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&ordering=${ordering}`,
       onStart: gamesRequested.type,
@@ -288,7 +290,7 @@ export const loadMoreGames = () => (dispatch, getState) => {
     queryKey,
     queryValue,
   } = getState().entities.products;
-  const url = `games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${
+  const url = `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${
     page + 1
   }${searchTerm ? `&search=${searchTerm}` : ""}${
     ordering ? `&ordering=${ordering}` : ""
