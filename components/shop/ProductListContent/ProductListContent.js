@@ -59,8 +59,8 @@ const ProductListContent = ({ dataToLoad }) => {
           </button>
         </div>
       )}
-      {error ||
-        (games?.length === 0 && (
+      {(error && !loading) ||
+        (!loading && games?.length === 0 && (
           <div className={classes.fourofour}>
             <iframe
               src="https://giphy.com/embed/14uQ3cOFteDaU"
