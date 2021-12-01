@@ -40,6 +40,11 @@
   color: #757575;
 }
 
+.footer {
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
 @media only screen and (max-width: 600px) {
   .login {
     width: 90%;

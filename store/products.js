@@ -17,6 +17,7 @@ const defaultState = {
   queryValue: null,
   display: "grid",
   error: false,
+  canLoadMore: false,
 };
 
 const productsSlice = createSlice({
@@ -24,17 +25,22 @@ const productsSlice = createSlice({
   initialState: defaultState,
   reducers: {
     gamesRequested: (products, action) => {
+      console.log("requested");
       products.loading = true;
       products.error = false;
       products.lastFetch = Date.now();
+      products.canLoadMore = true;
     },
 
     gamesReceived: (products, action) => {
       products.games = action.payload.results;
+
       products.loading = false;
       products.error = false;
 
+      console.log(action.payload.next);
       products.page = 1;
+      if (action.payload.next === null) products.canLoadMore = false;
     },
 
     gamesRequestFailed: (products, action) => {
@@ -44,6 +50,7 @@ const productsSlice = createSlice({
 
     moreGamesRequested: (products, action) => {
       products.moreLoading = true;
+      products.canLoadMore = true;
     },
 
     moreGamesReceived: (products, action) => {
@@ -52,7 +59,7 @@ const productsSlice = createSlice({
       products.games = [...products.games, ...action.payload.results];
 
       products.page += 1;
-      console.log("page", products.page);
+      if (!action.payload.next) products.canLoadMore = false;
     },
 
     moreGamesRequestFailed: (products, action) => {
@@ -93,6 +100,7 @@ const productsSlice = createSlice({
       products.queryKey = defaultState.queryKey;
       products.queryValue = defaultState.queryValue;
       products.error = defaultState.error;
+      products.canLoadMore = defaultState.canLoadMore;
     },
 
     displaySet: (products, action) => {
@@ -123,7 +131,6 @@ export const loadGames =
         querySet({ queryKey: queryKeys[0], queryValue: queryValues[0] })
       );
 
-    console.log("queryString", queryString);
     const {
       pageSize,
       searchTerm,

@@ -80,7 +80,6 @@ export const getSubtotal = createSelector(
     if (shoppingList.length === 0) return 0;
     var price = 0;
     for (var i = 0; i < shoppingList.length; i++) {
-      console.log(i, shoppingList[i]);
       price += shoppingList[i].price;
     }
     return price;

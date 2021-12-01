@@ -13,6 +13,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+import ReactTooltip from "react-tooltip";
 
 const Login = ({ headers, url, error }) => {
   const router = useRouter();
@@ -61,6 +62,7 @@ const Login = ({ headers, url, error }) => {
 
   return (
     <div className={classes.logincontainer}>
+      <ReactTooltip />
       {error ? (
         <pre>{JSON.stringify(error, null, 2)}</pre>
       ) : (
@@ -83,6 +85,11 @@ const Login = ({ headers, url, error }) => {
                   provider={providers?.github}
                   icon={<AiFillGithub size="1.5rem" />}
                 />
+
+                <span className={classes.footer}>
+                  * Cant send emails when signed in with GitHub as the API
+                  doesn't provide access to it(email).
+                </span>
               </div>
             ) : (
               <Loader type="ThreeDots" color="blueviolet" height={30} />

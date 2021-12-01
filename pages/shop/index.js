@@ -15,7 +15,6 @@ const Shop = () => {
     let mounted = true;
     if (router && Object.keys(router.query).length > 0) {
       setLoading(true);
-      console.log(router.query);
       const query = router.query;
       if (Object.keys(query).length !== 0) {
         const key = Object.keys(query)[0];

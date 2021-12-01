@@ -8,7 +8,8 @@ const LoginButton = ({ provider, background, color, icon }) => {
       style={{ background: background, color: color }}
       onClick={() => signIn(provider.id)}
     >
-      {icon} <span>Sign in with {provider?.name}</span>
+      {icon}
+      <span>Sign in with {provider?.name}</span>
     </button>
   );
 };

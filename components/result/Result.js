@@ -28,6 +28,8 @@ const Result = ({ data }) => {
     }
   }, [data, session, cart]);
 
+  console.log(data);
+
   useEffect(() => {
     if (session && orderCreated && cart?.length > 0) {
       const items = cart.map((item) => ({
@@ -41,10 +43,11 @@ const Result = ({ data }) => {
       const email = session?.user.email;
       const data = { items, total, user: { name, email } };
       dispatch(clearCart());
-      axios
-        .post("/api/mail", data)
-        .then((res) => {})
-        .catch((err) => console.log(err.response));
+      if (email)
+        axios
+          .post("/api/mail", data)
+          .then((res) => {})
+          .catch((err) => console.log(err.response));
     }
   }, [orderCreated, session]);
 
@@ -90,19 +93,20 @@ const Result = ({ data }) => {
             ></iframe>
             <div className={classes.order}>
               Thank you for your order{" "}
-              {
-                data?.session.payment_intent?.charges?.data[0]?.billing_details
-                  ?.name
-              }
-              ! Your Order id:{" "}
-              {data?.session.payment_intent?.charges?.data[0]?.receipt_number}
+              {session?.user
+                ? session.user.name
+                : data?.session.payment_intent?.charges?.data[0]
+                    ?.billing_details?.name}
+              ! Your Order id: <b>{data?.session.payment_intent?.id}</b>
             </div>
-            <div>
-              You will receive an email at{" "}
-              <span className={classes.email}>{session?.user.email}</span> with
-              the receipt.
-            </div>
-          </div>{" "}
+            {session?.user && session?.user.email && (
+              <div>
+                You will receive an email at{" "}
+                <span className={classes.email}>{session?.user.email}</span>{" "}
+                with the receipt.
+              </div>
+            )}
+          </div>
           <div onClick={handleGoToShopping} className={classes.buttoncontainer}>
             <button className={`mainbutton ${classes.shopping}`}>
               Continue Shopping

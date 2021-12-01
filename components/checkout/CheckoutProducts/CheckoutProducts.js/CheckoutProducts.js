@@ -24,7 +24,10 @@ const CheckoutProducts = () => {
           const product = {
             id: `game-${cartItem.id}-${cartItem.selectedPlatform.value}`,
             active: true,
-            description: cartItem.description_raw,
+            description:
+              cartItem.description_raw !== ""
+                ? cartItem.description_raw
+                : "N/A",
             name: cartItem.name,
             images: [
               cartItem.background_image,

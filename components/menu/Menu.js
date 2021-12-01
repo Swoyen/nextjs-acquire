@@ -7,9 +7,6 @@ const Menu = ({ visible, setVisible, items, buttonRef }) => {
   const handleHide = () => {
     setVisible(false);
   };
-  {
-    console.log(items);
-  }
 
   useEffect(() => {
     const handleClickOutside = (e) => {

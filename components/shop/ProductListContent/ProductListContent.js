@@ -23,15 +23,20 @@ const ProductListContent = ({ dataToLoad }) => {
   const moreLoading = useSelector(
     (state) => state.entities.products.moreLoading
   );
+
+  const canLoadMore = useSelector(
+    (state) => state.entities.products.canLoadMore
+  );
+
   useEffect(() => {
-    if (router) {
+    if (router && dataToLoad && dispatch) {
       dispatch(dataToLoad(router.query));
     }
     return () => dispatch(refreshState());
   }, [router, dataToLoad, dispatch]);
 
   const handleLoadMore = () => {
-    if (!moreLoading) dispatch(loadMoreGames());
+    if (!moreLoading && canLoadMore) dispatch(loadMoreGames());
   };
 
   useEffect(() => {
@@ -43,7 +48,7 @@ const ProductListContent = ({ dataToLoad }) => {
       {loading && <ProductLoader />}
       {!loading && !error && <ProductList games={games} />}
       {moreLoading && <Loading loading={true}></Loading>}
-      {!error && !moreLoading && !loading && (
+      {!error && !moreLoading && !loading && canLoadMore && (
         <div className="buttoncontainer">
           <button
             ref={ref}
@@ -54,17 +59,18 @@ const ProductListContent = ({ dataToLoad }) => {
           </button>
         </div>
       )}
-      {error && (
-        <div className={classes.fourofour}>
-          <iframe
-            src="https://giphy.com/embed/14uQ3cOFteDaU"
-            width="480"
-            height="360"
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
-        </div>
-      )}
+      {error ||
+        (games?.length === 0 && (
+          <div className={classes.fourofour}>
+            <iframe
+              src="https://giphy.com/embed/14uQ3cOFteDaU"
+              width="480"
+              height="360"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        ))}
     </div>
   );
 };
