@@ -87,8 +87,8 @@ const Login = ({ headers, url, error }) => {
                 />
 
                 <span className={classes.footer}>
-                  * Cant send emails when signed in with GitHub as the API
-                  doesn't provide access to it(email).
+                  * Cant send emails when signed in with GitHub as the API does
+                  not provide access to it(email).
                 </span>
               </div>
             ) : (
