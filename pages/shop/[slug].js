@@ -1,16 +1,19 @@
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {
-  getDlcs,
-  getGame,
-  getGames,
-  getGameTrailer,
-  getParentGames,
-  getScreenshots,
-  getSeries,
-} from "../../api_helper";
+// import {
+//   getDlcs,
+//   getGame,
+//   getGames,
+//   getGameTrailer,
+//   getParentGames,
+//   getScreenshots,
+//   getSeries,
+// } from "../../api_helper";
 import ProductDetail from "../../components/shop/ProductDetail/ProductDetail";
 import RelatedProductList from "../../components/shop/RelatedProductList/RelatedProductList";
+import { getGame } from "../api/game";
+import { getGames } from "../api/games";
 
 const Product = ({ game }) => {
   const router = useRouter();
@@ -24,13 +27,26 @@ const Product = ({ game }) => {
 
   useEffect(() => {
     if (slug) {
-      getGameTrailer(slug).then((res) => setGameTrailer(res.data));
-      getScreenshots(slug).then((res) => setScreenshots(res.data));
-      getDlcs(slug).then((res) => {
-        setDlcs(res.data);
-      });
-      getSeries(slug).then((res) => setRelatedGames(res.data));
-      getParentGames(slug).then((res) => setParentGames(res.data));
+      // getGameTrailer(slug).then((res) => setGameTrailer(res.data));
+      // getScreenshots(slug).then((res) => setScreenshots(res.data));
+      // getDlcs(slug).then((res) => {
+      //   setDlcs(res.data);
+      // });
+
+      axios
+        .get(`/api/game/${slug}/dlcs`)
+        .then((res) => setDlcs(res.data))
+        .catch((err) => console.error(err));
+
+      axios
+        .get(`/api/game/${slug}/series`)
+        .then((res) => setRelatedGames(res.data))
+        .catch((err) => console.error(err));
+
+      axios
+        .get(`/api/game/${slug}/parent-games`)
+        .then((res) => setParentGames(res.data))
+        .catch((err) => console.error(err));
     }
     return () => {
       setGameTrailer(null);
@@ -48,16 +64,16 @@ const Product = ({ game }) => {
         gameTrailer={gameTrailer}
         screenshots={screenshots}
       />
-      {dlcs?.results?.length > 0 && (
+      {dlcs && dlcs.length > 0 && (
         <RelatedProductList title={"DLC"} relatedProducts={dlcs} />
       )}
-      {/* {relatedGames?.results?.length > 0 && (
+      {relatedGames && relatedGames.length > 0 && (
         <RelatedProductList
           title={"Related Games"}
           relatedProducts={relatedGames}
         />
-      )} */}
-      {parentGames?.results?.length > 0 && (
+      )}
+      {parentGames && parentGames.length > 0 && (
         <RelatedProductList title={"Part of"} relatedProducts={parentGames} />
       )}
     </>
@@ -65,25 +81,37 @@ const Product = ({ game }) => {
 };
 
 export const getStaticPaths = async (context) => {
-  const response = await getGames();
-  const slugs = response?.data.results.map((game) => `/shop/${game.slug}`);
-  return {
-    fallback: "blocking",
-    paths: slugs,
-  };
+  try {
+    const games = await getGames();
+    const slugs = games.results.map((game) => `/shop/${game.slug}`);
+    return {
+      fallback: "blocking",
+      paths: slugs,
+    };
+  } catch {
+    return {
+      fallback: "blocking",
+      paths: "",
+    };
+  }
 };
 
 export const getStaticProps = async (context) => {
-  const slug = context.params.slug;
-
-  const game = (await getGame(slug))?.data;
-
-  return {
-    props: {
-      game,
-    },
-    revalidate: 1000,
-  };
+  try {
+    const slug = context.params.slug;
+    const game = await getGame(slug);
+    return {
+      props: {
+        game,
+      },
+      revalidate: 1000,
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      props: {},
+    };
+  }
 };
 
 export default Product;

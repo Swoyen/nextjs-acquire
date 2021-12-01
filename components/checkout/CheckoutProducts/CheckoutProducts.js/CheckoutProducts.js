@@ -71,7 +71,6 @@ const CheckoutProducts = () => {
     }).then((res) => res.json());
 
     const { error } = await stripe.redirectToCheckout({ sessionId });
-    // console.log(lineItems);
   };
 
   return (

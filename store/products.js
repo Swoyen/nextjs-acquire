@@ -39,7 +39,6 @@ const productsSlice = createSlice({
       products.loading = false;
       products.error = false;
 
-      console.log(action.payload.next);
       products.page = 1;
       if (action.payload.next === null) products.canLoadMore = false;
     },
@@ -124,8 +123,6 @@ export const loadGames =
         (key, index) => (queryString += `&${key}=${queryValues[index]}`)
       );
     }
-    // console.log(queryKeys);
-    //console.log(queryValues);
 
     if (query)
       dispatch(
@@ -176,7 +173,7 @@ export const loadLast30Days = () => (dispatch, getState) => {
   dispatch(searchDateModified({ startDateStr, endDateStr }));
   return dispatch(
     apiCallBegan({
-      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${startDateStr},${endDateStr}`,
       onStart: gamesRequested.type,
@@ -195,7 +192,7 @@ export const loadNextWeek = () => (dispatch, getState) => {
   dispatch(searchDateModified({ startDateStr: fromDate, endDateStr: to }));
   return dispatch(
     apiCallBegan({
-      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${fromDate},${to}`,
       onStart: gamesRequested.type,
@@ -214,7 +211,7 @@ export const loadThisWeek = () => (dispatch, getState) => {
   dispatch(searchDateModified({ startDateStr: fromDate, endDateStr: to }));
   return dispatch(
     apiCallBegan({
-      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${fromDate},${to}`,
       onStart: gamesRequested.type,
@@ -234,7 +231,7 @@ export const loadBestOfTheYear = () => (dispatch, getState) => {
   dispatch(searchOrderingModified(rating));
   return dispatch(
     apiCallBegan({
-      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${fromDate},${to}&ordering=${rating}`,
       onStart: gamesRequested.type,
@@ -253,7 +250,7 @@ export const loadPopularIn2020 = () => (dispatch, getState) => {
   dispatch(searchOrderingModified(ordering));
   return dispatch(
     apiCallBegan({
-      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&dates=${fromDate},${to}&ordering=${ordering}`,
       onStart: gamesRequested.type,
@@ -269,7 +266,7 @@ export const loadTop250 = () => (dispatch, getState) => {
   dispatch(searchOrderingModified(ordering));
   return dispatch(
     apiCallBegan({
-      url: `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${page}${
+      url: `/api/games?page_size=${pageSize}&page=${page}${
         searchTerm ? `&search=${searchTerm}` : ""
       }&ordering=${ordering}`,
       onStart: gamesRequested.type,
@@ -290,13 +287,11 @@ export const loadMoreGames = () => (dispatch, getState) => {
     queryKey,
     queryValue,
   } = getState().entities.products;
-  const url = `/api/games?key=273662619363477a9d8c149890fb482e&page_size=${pageSize}&page=${
-    page + 1
-  }${searchTerm ? `&search=${searchTerm}` : ""}${
-    ordering ? `&ordering=${ordering}` : ""
-  }${startDateStr ? `&dates=${startDateStr},${endDateStr}` : ""}${
-    queryKey ? `&${queryKey}=${queryValue}` : ""
-  }`;
+  const url = `/api/games?page_size=${pageSize}&page=${page + 1}${
+    searchTerm ? `&search=${searchTerm}` : ""
+  }${ordering ? `&ordering=${ordering}` : ""}${
+    startDateStr ? `&dates=${startDateStr},${endDateStr}` : ""
+  }${queryKey ? `&${queryKey}=${queryValue}` : ""}`;
   return dispatch(
     apiCallBegan({
       url,

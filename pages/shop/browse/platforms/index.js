@@ -1,9 +1,10 @@
 import React from "react";
-import { getPlatforms } from "../../../../api_helper";
+
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 
 import classes from "../../../../styles/Browse.module.css";
+import { getPlatforms } from "../../../api/browse";
 const platforms = ({ platforms }) => {
   return (
     <ShopLayout>
@@ -25,7 +26,7 @@ const platforms = ({ platforms }) => {
 
 export const getStaticProps = async () => {
   // const slug = context.params.slug;
-  const platforms = (await getPlatforms())?.data.results;
+  const platforms = await getPlatforms();
 
   return {
     props: {

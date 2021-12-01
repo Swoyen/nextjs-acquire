@@ -1,9 +1,10 @@
 import React from "react";
-import { getDevelopers } from "../../../../api_helper";
+
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 
 import classes from "../../../../styles/Browse.module.css";
+import { getDevelopers } from "../../../api/browse";
 const developers = ({ developers }) => {
   return (
     <ShopLayout>
@@ -25,7 +26,7 @@ const developers = ({ developers }) => {
 
 export const getStaticProps = async (context) => {
   // const slug = context.params.slug;
-  const developers = (await getDevelopers())?.data.results;
+  const developers = await getDevelopers();
 
   return {
     props: {

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getPageTitle } from "../../api_helper";
 import ReactLoader from "react-loader-spinner";
+import axios from "axios";
 
 const Shop = () => {
   const router = useRouter();
@@ -19,10 +20,13 @@ const Shop = () => {
       if (Object.keys(query).length !== 0) {
         const key = Object.keys(query)[0];
         const value = Object.values(query)[0];
-        getPageTitle({ key, value })
+        axios
+          .get(`/api/pagetitle?${key}=${value}`)
           .then((res) => {
-            setLoading(false);
-            mounted && setPageTitle(res.data.name);
+            if (mounted) {
+              setLoading(false);
+              setPageTitle(res.data);
+            }
           })
           .catch((err) => console.log(err));
       }

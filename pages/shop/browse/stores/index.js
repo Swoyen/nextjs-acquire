@@ -1,8 +1,9 @@
 import React from "react";
-import { getStores } from "../../../../api_helper";
+
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 import classes from "../../../../styles/Browse.module.css";
+import { getStores } from "../../../api/browse";
 
 const stores = ({ stores }) => {
   return (
@@ -24,8 +25,7 @@ const stores = ({ stores }) => {
 
 export const getStaticProps = async (context) => {
   // const slug = context.params.slug;
-  const stores = (await getStores())?.data.results;
-  console.log(stores);
+  const stores = await getStores();
 
   return {
     props: {

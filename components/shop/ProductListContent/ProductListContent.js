@@ -29,11 +29,11 @@ const ProductListContent = ({ dataToLoad }) => {
   );
 
   useEffect(() => {
-    if (router && dataToLoad && dispatch) {
+    if (router.query && dispatch) {
       dispatch(dataToLoad(router.query));
     }
     return () => dispatch(refreshState());
-  }, [router, dataToLoad, dispatch]);
+  }, [router.query, dispatch]);
 
   const handleLoadMore = () => {
     if (!moreLoading && canLoadMore) dispatch(loadMoreGames());

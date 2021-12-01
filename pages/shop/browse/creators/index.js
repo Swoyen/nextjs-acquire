@@ -1,9 +1,10 @@
 import React from "react";
-import { getCreators } from "../../../../api_helper";
+
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 
 import classes from "../../../../styles/Browse.module.css";
+import { getCreators } from "../../../api/browse";
 const creators = ({ creators }) => {
   return (
     <ShopLayout>
@@ -25,7 +26,7 @@ const creators = ({ creators }) => {
 
 export const getStaticProps = async (context) => {
   // const slug = context.params.slug;
-  const creators = (await getCreators())?.data.results;
+  const creators = await getCreators();
 
   return {
     props: {

@@ -35,7 +35,7 @@ const RelatedProductList = ({ relatedProducts, title }) => {
         responsive={responsive}
         showDots={true}
       >
-        {relatedProducts?.results?.map((dlc) => (
+        {relatedProducts?.map((dlc) => (
           <RelatedProduct key={dlc.id} dlc={dlc} />
         ))}
       </Carousel>

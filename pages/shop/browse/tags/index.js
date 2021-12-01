@@ -1,8 +1,9 @@
 import React from "react";
-import { getTags } from "../../../../api_helper";
+
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 import classes from "../../../../styles/Browse.module.css";
+import { getTags } from "../../../api/browse";
 
 const tags = ({ tags }) => {
   return (
@@ -25,7 +26,7 @@ const tags = ({ tags }) => {
 
 export const getStaticProps = async () => {
   // const slug = context.params.slug;
-  const tags = (await getTags())?.data.results;
+  const tags = await getTags();
 
   return {
     props: {

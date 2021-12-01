@@ -1,9 +1,10 @@
 import React from "react";
-import { getPlatforms, getPublishers } from "../../../../api_helper";
+
 import BrowseCard from "../../../../components/shop/Browse/BrowseCard";
 import ShopLayout from "../../../../components/shop/ShopLayout/ShopLayout";
 
 import classes from "../../../../styles/Browse.module.css";
+import { getPublishers } from "../../../api/browse";
 const publishers = ({ publishers }) => {
   return (
     <ShopLayout>
@@ -25,7 +26,8 @@ const publishers = ({ publishers }) => {
 
 export const getStaticProps = async (context) => {
   // const slug = context.params.slug;
-  const publishers = (await getPublishers())?.data.results;
+
+  const publishers = await getPublishers();
 
   return {
     props: {
