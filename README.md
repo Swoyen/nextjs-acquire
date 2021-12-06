@@ -17,5 +17,5 @@ You will need the env.local file to run in locally which I might provide upon re
 
 The main purpose of starting this project was to learn nextjs by creating an ecommerce website. The site is deployed on https://nextjs-acquire.vercel.app . The project took me about 2 weeks to complete. This application allows user to view games and purchase them. Users can also login and view their purchase history. Users will not be charged for their purchases as it is just a test website.
 
-The transaction is done using stripe. User data is stored in mongodb. Authentication is handled by nextauth. The API data is obtained from https://api.rawg.io
-
+The transaction is done using stripe. User data is stored in mongodb. Authentication is handled by nextauth. The API data is obtained from https://api.rawg.io . The pages use Incremental Static Generation, i.e. the pages are cached on new requests for the page and served statically for the later requests to the same page. The application uses combination of client side rendering and server side rendering. Client side rendering is used for searching, using the api. 
+ 
