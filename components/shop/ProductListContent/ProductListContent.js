@@ -19,6 +19,7 @@ const ProductListContent = ({ dataToLoad }) => {
 
   const games = useSelector((state) => state.entities.products.games);
   const { loading, error } = useSelector((state) => state.entities.products);
+  const badGateWay = useSelector((state) => state.entities.products.badGateWay);
 
   const moreLoading = useSelector(
     (state) => state.entities.products.moreLoading
@@ -71,6 +72,12 @@ const ProductListContent = ({ dataToLoad }) => {
             ></iframe>
           </div>
         ))}
+      {badGateWay && (
+        <div className={classes.badgateway}>
+          Bad Gateway. Somethings wrong with the API. Please try again in a few
+          minutes.
+        </div>
+      )}
     </div>
   );
 };

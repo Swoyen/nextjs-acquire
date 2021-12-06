@@ -19,6 +19,7 @@ const defaultState = {
   display: "grid",
   error: false,
   canLoadMore: false,
+  badGateWay: false,
 };
 
 const productsSlice = createSlice({
@@ -46,8 +47,8 @@ const productsSlice = createSlice({
     gamesRequestFailed: (products, action) => {
       products.loading = false;
       products.error = true;
+      if (action.payload.status === 502) products.badGateWay = true;
     },
-
     moreGamesRequested: (products, action) => {
       products.moreLoading = true;
       products.canLoadMore = true;
@@ -101,6 +102,7 @@ const productsSlice = createSlice({
       products.queryValue = defaultState.queryValue;
       products.error = defaultState.error;
       products.canLoadMore = defaultState.canLoadMore;
+      products.badGateWay = defaultState.badGateWay;
     },
 
     displaySet: (products, action) => {
