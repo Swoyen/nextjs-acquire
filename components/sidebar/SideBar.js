@@ -81,6 +81,11 @@ const SideBar = () => {
             </Link>
           </li>
           <li className={`${classes.link} ${classes.subheading}`}>
+            <Link passHref href="/shop/top/popular-in-2021">
+              <div onClick={() => setVisible(false)}>Popular in 2021</div>
+            </Link>
+          </li>
+          <li className={`${classes.link} ${classes.subheading}`}>
             <Link passHref href="/shop/top/popular-in-2020">
               <div onClick={() => setVisible(false)}>Popular in 2020</div>
             </Link>

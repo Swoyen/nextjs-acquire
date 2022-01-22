@@ -56,6 +56,10 @@ const ProductDetail = ({ game, gameTrailer, screenshots }) => {
     };
   }, [game]);
 
+  useEffect(() => {
+    console.log(game);
+  }, [game]);
+
   return (
     <div className={classes.productdetail}>
       <div className={classes.imagesvideocontainer}>

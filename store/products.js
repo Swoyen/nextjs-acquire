@@ -261,6 +261,24 @@ export const loadPopularIn2020 = () => (dispatch, getState) => {
     })
   );
 };
+export const loadPopularIn2021 = () => (dispatch, getState) => {
+  const fromDate = "2021-01-01";
+  const to = "2021-12-30";
+  const { pageSize, page, searchTerm } = getState().entities.products;
+  const ordering = "-metacritic";
+  dispatch(searchDateModified({ startDateStr: fromDate, endDateStr: to }));
+  dispatch(searchOrderingModified(ordering));
+  return dispatch(
+    apiCallBegan({
+      url: `/api/games?page_size=${pageSize}&page=${page}${
+        searchTerm ? `&search=${searchTerm}` : ""
+      }&dates=${fromDate},${to}&ordering=${ordering}`,
+      onStart: gamesRequested.type,
+      onSuccess: gamesReceived.type,
+      onError: gamesRequestFailed.type,
+    })
+  );
+};
 
 export const loadTop250 = () => (dispatch, getState) => {
   const { pageSize, page, searchTerm } = getState().entities.products;
